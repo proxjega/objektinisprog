@@ -9,7 +9,7 @@ struct Studentas {
     std::string vardas;
     std::string pavarde;
     std::vector<float>Pazymiai;
-    int egzoPazymys;
+    float egzoPazymys;
     float vidMedian = 0;
     float vidVid = 0;
 };

@@ -18,5 +18,8 @@
     <ClCompile Include="ConsoleApplication1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cmasyvas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
