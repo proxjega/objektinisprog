@@ -55,7 +55,13 @@ int main()
                 mark = randMark;
                 std::cout << "Generuotas pazymys: " << randMark << "\n";
             }
-            if (mark == 0) break;
+            if (mark == 0) {
+                if (student.marks.size() != 0) {
+                    break;
+                }
+                else std::cout << "Iveskite bent viena pazymi\n";
+                continue;
+            }
             student.marks.push_back(mark);
         }
         std::cout << "Iveskite egzamino pazymi (-1 - generuoti atsitiktinai):\n";
