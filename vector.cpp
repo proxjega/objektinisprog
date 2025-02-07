@@ -7,14 +7,26 @@ int inputMark(){
             return value;
         }
         else {
-            std::cout << "Iveskite pazymi nuo 1 iki 10 (0 - pabaigti, -1 - generuoti atsitiktinai)" << std::endl;
+            std::cout << "Iveskite tinkama pazymi nuo 1 iki 10 (0 - pabaigti, -1 - generuoti atsitiktinai)" << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
 }
 
-
+int inputExamMark() {
+    int value;
+    while (true) {
+        if (std::cin >> value && value <= 10 && value > -2 && value != 0) {
+            return value;
+        }
+        else {
+            std::cout << "Iveskite tinkama pazymi nuo 1 iki 10 (-1 - generuoti atsitiktinai)" << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    }
+}
 
 int main()
 {
@@ -34,20 +46,24 @@ int main()
             student.name = names[rand() % 5];
         }
         std::cout << "Iveskite studento pavarde:\n";
-        std::cin >> student.name;
+        std::cin >> student.surname;
         std::cout << "Iveskite pazymius (0 - pabaigti, -1 - generuoti atsitiktinai)\n";
         while (true) {
-            int pazymys = inputMark();
-            if (pazymys == -1) {
-                int randPazymys = rand() % 10 + 1;
-                student.marks.push_back(randPazymys);
-                std::cout << randPazymys << "\n";
+            int mark = inputMark();
+            if (mark == -1) {
+                int randMark = rand() % 10 + 1;
+                mark = randMark;
+                std::cout << "Generuotas pazymys: " << randMark << "\n";
             }
-            if (pazymys == 0) break;
-            student.marks.push_back(pazymys);
+            if (mark == 0) break;
+            student.marks.push_back(mark);
         }
-        std::cout << "Iveskite egzamino pazymi: \n";
-        student.examMark = inputMark();
+        std::cout << "Iveskite egzamino pazymi (-1 - generuoti atsitiktinai):\n";
+        student.examMark = inputExamMark();
+        if (student.examMark == -1) {
+            student.examMark = rand() % 10 + 1;
+            std::cout << "Generuotas pazymys: " << student.examMark << "\n";
+        }
         for (int i = 0; i < student.marks.size(); i++) {
             galutinisVid = galutinisVid + student.marks[i];
         }
