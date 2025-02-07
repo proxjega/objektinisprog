@@ -1,54 +1,68 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <iomanip>
-#include <algorithm>
+#include "mylibrary.h"
+
+int inputMark(){
+    int value;
+    while (true) {
+        if (std::cin >> value && value <= 10 && value > -2) {
+            return value;
+        }
+        else {
+            std::cout << "Iveskite pazymi nuo 1 iki 10 (0 - pabaigti, -1 - generuoti atsitiktinai)" << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    }
+}
 
 
-struct Studentas {
-    std::string vardas;
-    std::string pavarde;
-    std::vector<float>Pazymiai;
-    float egzoPazymys;
-    float vidMedian = 0;
-    float vidVid = 0;
-};
+
 int main()
 {
-    std::vector<Studentas> grupe;
+    srand(time(NULL));
+
+    std::vector<Student> grupe;
+    std::string names[5] = { "name1", "name2", "name3", "name4", "name5" };
+    float galutinisVid = 0;
+    float mediana = 0;
+
     while (true) {
-        Studentas studentas;
-        std::cout << "Iveskite studento varda:(iveskite 0 jei norite pabaigti)\n";
-        std::cin >> studentas.vardas;
-        if (studentas.vardas == "0") break;
+        Student student;
+        std::cout << "Iveskite studento varda:(0 - pabaigti, -1 - generuoti atsitiktinai)\n";
+        std::cin >> student.name;
+        if (student.name == "0") break;
+        if (student.name == "-1") {
+            student.name = names[rand() % 5];
+        }
         std::cout << "Iveskite studento pavarde:\n";
-        std::cin >> studentas.pavarde;
-        std::cout << "Iveskite pazymius (iveskite 0 kai norite pabaigti)\n";
+        std::cin >> student.name;
+        std::cout << "Iveskite pazymius (0 - pabaigti, -1 - generuoti atsitiktinai)\n";
         while (true) {
-            float pazymys = 0;
-            std::cin >> pazymys;
+            int pazymys = inputMark();
+            if (pazymys == -1) {
+                int randPazymys = rand() % 10 + 1;
+                student.marks.push_back(randPazymys);
+                std::cout << randPazymys << "\n";
+            }
             if (pazymys == 0) break;
-            studentas.Pazymiai.push_back(pazymys);
+            student.marks.push_back(pazymys);
         }
         std::cout << "Iveskite egzamino pazymi: \n";
-        std::cin >> studentas.egzoPazymys;
-        float galutinis = 0;
-        for (int i = 0; i < studentas.Pazymiai.size(); i++) {
-            galutinis = galutinis + studentas.Pazymiai[i];
+        student.examMark = inputMark();
+        for (int i = 0; i < student.marks.size(); i++) {
+            galutinisVid = galutinisVid + student.marks[i];
         }
-        std::sort(studentas.Pazymiai.begin(), studentas.Pazymiai.end());
-        float mediana = 0;
-        (studentas.Pazymiai.size() % 2 != 0) ? mediana = studentas.Pazymiai[studentas.Pazymiai.size() / 2] : mediana = (studentas.Pazymiai[studentas.Pazymiai.size() / 2] + studentas.Pazymiai[studentas.Pazymiai.size() / 2 + 1]) / 2;
-        mediana = mediana * 0.4 + studentas.egzoPazymys * 0.6;
-        galutinis = galutinis / studentas.Pazymiai.size() * 0.4 + studentas.egzoPazymys * 0.6;
-        studentas.vidVid = galutinis;
-        studentas.vidMedian = mediana;
-        grupe.push_back(studentas);
+        std::sort(student.marks.begin(), student.marks.end());
+        (student.marks.size() % 2 != 0) ? mediana = student.marks[student.marks.size() / 2] : mediana = (student.marks[student.marks.size() / 2] + student.marks[student.marks.size() / 2 + 1]) / 2;
+        mediana = mediana * 0.4 + student.examMark * 0.6;
+        galutinisVid = galutinisVid / student.marks.size() * 0.4 + student.examMark * 0.6;
+        student.vid = galutinisVid;
+        student.median = mediana;
+        grupe.push_back(student);
     }
     std::cout << std::setw(8) << "Pavarde" << std::setw(16) << "Vardas" << std::setw(24) << "Galutinis(vid.)/" << std::setw(25) << "Galutinis(med.)\n";
     std::cout << "-----------------------------------------------------------------------------------\n";
     for (int i = 0; i < grupe.size(); i++) {
-        std::cout << std::setw(8) << grupe[i].pavarde << std::setw(16) << grupe[i].vardas << std::setw(17) << std::setprecision(3) << grupe[i].vidVid << std::setw(23) << grupe[i].vidMedian << "\n";
+        std::cout << std::setw(8) << grupe[i].surname << std::setw(16) << grupe[i].name << std::setw(17) << std::setprecision(3) << grupe[i].vid << std::setw(23) << grupe[i].median << "\n";
     }
 
 }

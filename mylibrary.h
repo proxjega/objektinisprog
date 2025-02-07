@@ -1,0 +1,18 @@
+#pragma once
+#include <iostream>
+#include <vector>
+#include <string>
+#include <iomanip>
+#include <algorithm>
+#include <ctime>
+#include <limits>
+
+
+struct Student {
+    std::string name;
+    std::string surname;
+    std::vector<int>marks;
+    int examMark;
+    float median = 0;
+    float vid = 0;
+};
