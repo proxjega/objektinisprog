@@ -68,7 +68,7 @@ int main()
             galutinisVid = galutinisVid + student.marks[i];
         }
         std::sort(student.marks.begin(), student.marks.end());
-        (student.marks.size() % 2 != 0) ? mediana = student.marks[student.marks.size() / 2] : mediana = (student.marks[student.marks.size() / 2] + student.marks[student.marks.size() / 2 + 1]) / 2;
+        (student.marks.size() % 2 != 0) ? mediana = student.marks[student.marks.size() / 2] : mediana = (student.marks[student.marks.size() / 2] + student.marks[student.marks.size() / 2 - 1]) / 2.0;
         mediana = mediana * 0.4 + student.examMark * 0.6;
         galutinisVid = galutinisVid / student.marks.size() * 0.4 + student.examMark * 0.6;
         student.vid = galutinisVid;
@@ -78,7 +78,7 @@ int main()
     std::cout << std::setw(8) << "Pavarde" << std::setw(16) << "Vardas" << std::setw(24) << "Galutinis(vid.)/" << std::setw(25) << "Galutinis(med.)\n";
     std::cout << "-----------------------------------------------------------------------------------\n";
     for (int i = 0; i < grupe.size(); i++) {
-        std::cout << std::setw(8) << grupe[i].surname << std::setw(16) << grupe[i].name << std::setw(17) << std::setprecision(3) << grupe[i].vid << std::setw(23) << grupe[i].median << "\n";
+        std::cout << std::setw(8) << grupe[i].surname << std::setw(16) << grupe[i].name << std::setw(17) << std::setprecision(2) << std::fixed << grupe[i].vid << std::setw(23) << std::setprecision(2) << std::fixed << grupe[i].median << "\n";
     }
 
 }
