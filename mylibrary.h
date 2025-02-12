@@ -12,7 +12,7 @@ struct Student {
     std::string name;
     std::string surname;
     std::vector<int>marks;
-    int examMark;
+    int examMark = 0;
     float median = 0;
     float vid = 0;
 };
