@@ -59,19 +59,19 @@ float Median(Student st) {
     return median;
 }
 
-bool CompareByName(const Student& a, const Student& b) {
+bool CompareByName(Student a, Student b) {
 	return a.name < b.name;
 }
 
-bool CompareBySurname(const Student& a, const Student& b) {
+bool CompareBySurname(Student a, Student b) {
 	return a.surname < b.surname;
 }
 
-bool CompareByVid(const Student& a, const Student& b) {
+bool CompareByVid(Student a, Student b) {
 	return a.vid < b.vid;
 }
 
-bool CompareByMed(const Student& a, const Student& b) {
+bool CompareByMed(Student a, Student b) {
     return a.median < b.median;
 }
 
