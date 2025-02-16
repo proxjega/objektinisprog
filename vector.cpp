@@ -59,6 +59,22 @@ float Median(Student st) {
     return median;
 }
 
+bool CompareByName(const Student& a, const Student& b) {
+	return a.name < b.name;
+}
+
+bool CompareBySurname(const Student& a, const Student& b) {
+	return a.surname < b.surname;
+}
+
+bool CompareByVid(const Student& a, const Student& b) {
+	return a.vid < b.vid;
+}
+
+bool CompareByMed(const Student& a, const Student& b) {
+    return a.median < b.median;
+}
+
 int main()
 {
     srand(time(NULL));
@@ -73,6 +89,7 @@ int main()
     int randMark;
     bool check = true;
     ifstream file("kursiokai.txt");
+	file.close();
 
     while (check == true) {
         Student student;
@@ -143,8 +160,9 @@ int main()
             grupe.push_back(student);
             break;
         case('4'):
+			file.open("kursiokai.txt");
             if (!file) {
-                cout << "Failas nerastas\n";
+                std::cerr << "Failas nerastas\n";
                 break;
             }
             else {
@@ -158,7 +176,7 @@ int main()
                 while (file) {
                     Student student;
                     file >> student.name >> student.surname;
-                    int mark;
+                    int mark = 0;
                     for (int i = 0; i < counter - 3; i++) {
                         file >> mark;
                         student.marks.push_back(mark);
@@ -181,6 +199,30 @@ int main()
             continue;
         }
     }
+	cout << "Pagal ka rusiuoti studentus? (1 - pagal varda, 2 - pagal pavarde, 3 - pagal galutini bala (vid.), 4 - pagal galutini bala (med.))\n";
+    while (true) {
+        cin >> menu;
+        switch (menu)
+        {
+        case('1'):
+            sort(grupe.begin(), grupe.end(), CompareByName);
+            break;
+        case('2'):
+            sort(grupe.begin(), grupe.end(), CompareBySurname);
+            break;
+        case('3'):
+            sort(grupe.begin(), grupe.end(), CompareByVid);
+            break;
+        case('4'):
+            sort(grupe.begin(), grupe.end(), CompareByMed);
+            break;
+        default:
+            cout << "Iveskite tinkama skaiciu nuo 1 iki 4\n";
+            continue;
+        }
+        break;
+    }
+	system("cls");
     cout << setw(17) << left << "Pavarde" << setw(17) << left << "Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
     cout << "-----------------------------------------------------------------------------------\n";
     for (int i = 0; i < grupe.size(); i++) {

@@ -1,4 +1,6 @@
 Vardas	  Pavarde    ND1  ND2  ND3  ND4  ND5  Egzaminas
-Vardas1000000   Pavarde1000000   8    9    10   6    10   9 
-Vardas2   Pavarde2   7    10   8    5    4    6 
-Vardas3   Pavarde3   1    1    1    1    1    1
+Vardas1000000   Pavarde1000000   8    9    10   6    10   9
+Vardas2   Pavarde2   7    10   8    5    4    6
+Vardas3   Pavarde3   1    1   1    1    1    1
+Arnas Zpavarde 1 1 1 1 1 1
+Zigmantas Apavarde 10 10 10 10 10 10
