@@ -1,6 +1,6 @@
 ﻿#include "mylibrary.h"
 
-int inputMark(){
+int InputMark(){
     int value;
     while (true) {
         if (std::cin >> value && value <= 10 && value > -1) {
@@ -14,7 +14,7 @@ int inputMark(){
     }
 }
 
-int inputMarkNum() {
+int InputMarkNum() {
     int value;
     while (true) {
         if (std::cin >> value && value > 0) {
@@ -28,7 +28,7 @@ int inputMarkNum() {
     }
 }
 
-int inputExamMark() {
+int InputExamMark() {
     int value;
     while (true) {
         if (std::cin >> value && value <= 10 && value > 0 ) {
@@ -72,11 +72,12 @@ int main()
     int randExMark;
     int randMark;
     bool check = true;
+    std::ifstream file("kursiokai.txt");
 
     while (check == true) {
         Student student;
         std::cout << "---------------------------------\nMENU\n";
-        std::cout << "1 - ranka ivesti duomenis\n2 - generuoti pazymius\n3 - generuoti ir pazymius ir studentu vardus, pavardes\n4 - baigti darba\n---------------------------------\n";
+        std::cout << "1 - ranka ivesti duomenis\n2 - generuoti pazymius\n3 - generuoti ir pazymius ir studentu vardus, pavardes\n4 - ivesti duomenis is failo\n5 - baigti darba\n---------------------------------\n";
         std::cin >> menu;
         switch (menu)
         {
@@ -87,7 +88,7 @@ int main()
             std::cin >> student.surname;
             std::cout << "Iveskite pazymius (0 - pabaigti)\n";
             while (true) {
-                int mark = inputMark();
+                int mark = InputMark();
                 if (mark == 0) {
                     if (student.marks.size() != 0) {
                         break;
@@ -98,7 +99,7 @@ int main()
                 student.marks.push_back(mark);
             }
             std::cout << "Iveskite egzamino pazymi:\n";
-            student.examMark = inputExamMark();
+            student.examMark = InputExamMark();
             student.vid = Mean(student);
             student.median = Median(student);
             grupe.push_back(student);
@@ -109,7 +110,7 @@ int main()
             std::cout << "Iveskite studento pavarde:\n";
             std::cin >> student.surname;
             std::cout << "Kiek pazymiu generuoti?\n";
-            markNum = inputMarkNum();
+            markNum = InputMarkNum();
             for (int i = 0; i < markNum; i++) {
                 randMark = rand() % 10 + 1;
                 std::cout << "Generuotas pazymys: " << randMark << "\n";
@@ -128,7 +129,7 @@ int main()
             student.surname = surnames[rand() % 5];
             std::cout << "Generuota pavarde: " << student.surname << std::endl;
             std::cout << "Kiek pazymiu generuoti?\n";
-            markNum = inputMarkNum();
+            markNum = InputMarkNum();
             for (int i = 0; i < markNum; i++) {
                 randMark = rand() % 10 + 1;
                 std::cout << "Generuotas pazymys: " << randMark << "\n";
@@ -141,7 +142,31 @@ int main()
             student.median = Median(student);
             grupe.push_back(student);
             break;
-        case('4'):
+		case('4'):
+            if (!file) {
+				std::cout << "Failas nerastas\n";
+				break;
+			}
+            else {
+                std::string temp;
+                std::getline(file, temp);
+                while (!file==0) {
+                    Student student;
+                    file >> student.name >> student.surname;
+					int mark;
+					while (file >> mark) {
+						student.marks.push_back(mark);
+					}
+					student.examMark = student.marks[student.marks.size() - 1];
+					student.marks.pop_back();
+					student.vid = Mean(student);
+					student.median = Median(student);
+					grupe.push_back(student);
+				}
+                file.close();
+            }
+            break;
+        case('5'):
             check = false;
             break;
         default:
