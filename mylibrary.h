@@ -9,6 +9,18 @@
 #include <fstream>
 #include <sstream>
 
+using std::cout;
+using std::cin;
+using std::endl;
+using std::vector;
+using std::string;
+using std::sort;
+using std::ifstream;
+using std::stringstream;
+using std::left;
+using std::setw;
+using std::setprecision;
+using std::fixed;
 
 struct Student {
     std::string name;

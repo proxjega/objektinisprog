@@ -1,15 +1,15 @@
 ﻿#include "mylibrary.h"
 
-int InputMark(){
+int InputMark() {
     int value;
     while (true) {
-        if (std::cin >> value && value <= 10 && value > -1) {
+        if (cin >> value && value <= 10 && value > -1) {
             return value;
         }
         else {
-            std::cout << "\007Iveskite tinkama pazymi nuo 1 iki 10 (0 - pabaigti)" << std::endl;
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cout << "\007Iveskite tinkama pazymi nuo 1 iki 10 (0 - pabaigti)" << endl;
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
 }
@@ -17,13 +17,13 @@ int InputMark(){
 int InputMarkNum() {
     int value;
     while (true) {
-        if (std::cin >> value && value > 0) {
+        if (cin >> value && value > 0) {
             return value;
         }
         else {
-            std::cout << "\007Iveskite tinkama pazymiu skaiciu" << std::endl;
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cout << "\007Iveskite tinkama pazymiu skaiciu" << endl;
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
 }
@@ -31,13 +31,13 @@ int InputMarkNum() {
 int InputExamMark() {
     int value;
     while (true) {
-        if (std::cin >> value && value <= 10 && value > 0 ) {
+        if (cin >> value && value <= 10 && value > 0) {
             return value;
         }
         else {
-            std::cout << "\007Iveskite tinkama pazymi nuo 1 iki 10" << std::endl;
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cout << "\007Iveskite tinkama pazymi nuo 1 iki 10" << endl;
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
 }
@@ -53,7 +53,7 @@ float Mean(Student st) {
 
 float Median(Student st) {
     float median = 0;
-    std::sort(st.marks.begin(), st.marks.end());
+    sort(st.marks.begin(), st.marks.end());
     (st.marks.size() % 2 != 0) ? median = st.marks[st.marks.size() / 2] : median = (st.marks[st.marks.size() / 2] + st.marks[st.marks.size() / 2 - 1]) / 2.0;
     median = median * 0.4 + st.examMark * 0.6;
     return median;
@@ -62,9 +62,9 @@ float Median(Student st) {
 int main()
 {
     srand(time(NULL));
-    std::vector<Student> grupe;
-    std::string names[5] = { "name1", "name2", "name3", "name4", "name5" };
-    std::string surnames[5] = { "surname1", "surname2", "surname3", "surname4", "surname5" };
+    vector<Student> grupe;
+    string names[5] = { "name1", "name2", "name3", "name4", "name5" };
+    string surnames[5] = { "surname1", "surname2", "surname3", "surname4", "surname5" };
     float galutinisVid = 0;
     float mediana = 0;
     char menu;
@@ -72,52 +72,52 @@ int main()
     int randExMark;
     int randMark;
     bool check = true;
-    std::ifstream file("studentai10000.txt");
+    ifstream file("kursiokai.txt");
 
     while (check == true) {
         Student student;
-        std::cout << "---------------------------------\nMENU\n";
-        std::cout << "1 - ranka ivesti duomenis\n2 - generuoti pazymius\n3 - generuoti ir pazymius ir studentu vardus, pavardes\n4 - ivesti duomenis is failo\n5 - baigti darba\n---------------------------------\n";
-        std::cin >> menu;
+        cout << "---------------------------------\nMENU\n";
+        cout << "1 - ranka ivesti duomenis\n2 - generuoti pazymius\n3 - generuoti ir pazymius ir studentu vardus, pavardes\n4 - ivesti duomenis is failo\n5 - baigti darba\n---------------------------------\n";
+        cin >> menu;
         switch (menu)
         {
         case('1'):
-            std::cout << "Iveskite studento varda:\n";
-            std::cin >> student.name;
-            std::cout << "Iveskite studento pavarde:\n";
-            std::cin >> student.surname;
-            std::cout << "Iveskite pazymius (0 - pabaigti)\n";
+            cout << "Iveskite studento varda:\n";
+            cin >> student.name;
+            cout << "Iveskite studento pavarde:\n";
+            cin >> student.surname;
+            cout << "Iveskite pazymius (0 - pabaigti)\n";
             while (true) {
                 int mark = InputMark();
                 if (mark == 0) {
                     if (student.marks.size() != 0) {
                         break;
                     }
-                    else std::cout << "Iveskite bent viena pazymi\n";
+                    else cout << "Iveskite bent viena pazymi\n";
                     continue;
                 }
                 student.marks.push_back(mark);
             }
-            std::cout << "Iveskite egzamino pazymi:\n";
+            cout << "Iveskite egzamino pazymi:\n";
             student.examMark = InputExamMark();
             student.vid = Mean(student);
             student.median = Median(student);
             grupe.push_back(student);
             break;
         case('2'):
-            std::cout << "Iveskite studento varda:\n";
-            std::cin >> student.name;
-            std::cout << "Iveskite studento pavarde:\n";
-            std::cin >> student.surname;
-            std::cout << "Kiek pazymiu generuoti?\n";
+            cout << "Iveskite studento varda:\n";
+            cin >> student.name;
+            cout << "Iveskite studento pavarde:\n";
+            cin >> student.surname;
+            cout << "Kiek pazymiu generuoti?\n";
             markNum = InputMarkNum();
             for (int i = 0; i < markNum; i++) {
                 randMark = rand() % 10 + 1;
-                std::cout << "Generuotas pazymys: " << randMark << "\n";
+                cout << "Generuotas pazymys: " << randMark << "\n";
                 student.marks.push_back(randMark);
             }
             randExMark = rand() % 10 + 1;
-            std::cout << "Generuotas egzamino pazymys: " << randExMark << "\n";
+            cout << "Generuotas egzamino pazymys: " << randExMark << "\n";
             student.examMark = randExMark;
             student.vid = Mean(student);
             student.median = Median(student);
@@ -125,32 +125,32 @@ int main()
             break;
         case('3'):
             student.name = names[rand() % 5];
-            std::cout << "Generuotas vardas: " << student.name << std::endl;
+            cout << "Generuotas vardas: " << student.name << endl;
             student.surname = surnames[rand() % 5];
-            std::cout << "Generuota pavarde: " << student.surname << std::endl;
-            std::cout << "Kiek pazymiu generuoti?\n";
+            cout << "Generuota pavarde: " << student.surname << endl;
+            cout << "Kiek pazymiu generuoti?\n";
             markNum = InputMarkNum();
             for (int i = 0; i < markNum; i++) {
                 randMark = rand() % 10 + 1;
-                std::cout << "Generuotas pazymys: " << randMark << "\n";
+                cout << "Generuotas pazymys: " << randMark << "\n";
                 student.marks.push_back(randMark);
             }
             randExMark = rand() % 10 + 1;
-            std::cout << "Generuotas egzamino pazymys: " << randExMark << "\n";
+            cout << "Generuotas egzamino pazymys: " << randExMark << "\n";
             student.examMark = randExMark;
             student.vid = Mean(student);
             student.median = Median(student);
             grupe.push_back(student);
             break;
-		case('4'):
+        case('4'):
             if (!file) {
-				std::cout << "Failas nerastas\n";
-				break;
-			}
+                cout << "Failas nerastas\n";
+                break;
+            }
             else {
-                std::string temp;
-                std::getline(file, temp);
-                std::stringstream ss(temp);
+                string temp;
+                getline(file, temp);
+                stringstream ss(temp);
                 int counter = 0;
                 while (ss >> temp) {
                     counter++;
@@ -158,18 +158,18 @@ int main()
                 while (file) {
                     Student student;
                     file >> student.name >> student.surname;
-					int mark;
-					for (int i = 0; i < counter-3; i++) {
-						file >> mark;
-						student.marks.push_back(mark);
-					}
+                    int mark;
+                    for (int i = 0; i < counter - 3; i++) {
+                        file >> mark;
+                        student.marks.push_back(mark);
+                    }
                     file >> mark;
-					student.examMark = mark;
-					student.vid = Mean(student);
-					student.median = Median(student);
-					grupe.push_back(student);
-                    std::getline(file, temp);
-				}
+                    student.examMark = mark;
+                    student.vid = Mean(student);
+                    student.median = Median(student);
+                    grupe.push_back(student);
+                    getline(file, temp);
+                }
                 file.close();
             }
             break;
@@ -177,14 +177,14 @@ int main()
             check = false;
             break;
         default:
-            std::cout << "Iveskite tinkama skaiciu nuo 1 iki 4\n";
+            cout << "Iveskite tinkama skaiciu nuo 1 iki 4\n";
             continue;
         }
     }
-    std::cout << std::setw(8) << "Pavarde" << std::setw(16) << "Vardas" << std::setw(24) << "Galutinis(vid.)/" << std::setw(25) << "Galutinis(med.)\n";
-    std::cout << "-----------------------------------------------------------------------------------\n";
+    cout << setw(17) << left << "Pavarde" << setw(17) << left << "Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
+    cout << "-----------------------------------------------------------------------------------\n";
     for (int i = 0; i < grupe.size(); i++) {
-        std::cout << std::setw(8) << grupe[i].surname << std::setw(16) << grupe[i].name << std::setw(17) << std::setprecision(2) << std::fixed << grupe[i].vid << std::setw(23) << std::setprecision(2) << std::fixed << grupe[i].median << "\n";
+        cout << setw(17) << left << grupe[i].surname << setw(17) << left << grupe[i].name << setw(20) << left << setprecision(2) << fixed << grupe[i].vid << setw(15) << left << setprecision(2) << fixed << grupe[i].median << "\n";
     }
 
 }
