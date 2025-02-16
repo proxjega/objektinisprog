@@ -88,7 +88,8 @@ int main()
     int randExMark;
     int randMark;
     bool check = true;
-    ifstream file("kursiokai.txt");
+	const string fileName = "kursiokai.txt";
+    ifstream file(fileName);
 	file.close();
 
     while (check == true) {
@@ -160,7 +161,7 @@ int main()
             grupe.push_back(student);
             break;
         case('4'):
-			file.open("kursiokai.txt");
+			file.open(fileName);
             if (!file) {
                 std::cerr << "Failas nerastas\n";
                 break;
