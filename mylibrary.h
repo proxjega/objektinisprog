@@ -7,6 +7,7 @@
 #include <ctime>
 #include <limits>
 #include <fstream>
+#include <sstream>
 
 
 struct Student {

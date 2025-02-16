@@ -47,7 +47,7 @@ float Mean(Student st) {
     for (int i = 0; i < st.marks.size(); i++) {
         mean = mean + st.marks[i];
     }
-    mean = mean / st.marks.size() * 0.4 + st.examMark * 0.6;
+    mean = (mean / st.marks.size()) * 0.4 + st.examMark * 0.6;
     return mean;
 }
 
@@ -72,7 +72,7 @@ int main()
     int randExMark;
     int randMark;
     bool check = true;
-    std::ifstream file("kursiokai.txt");
+    std::ifstream file("studentai10000.txt");
 
     while (check == true) {
         Student student;
@@ -117,8 +117,8 @@ int main()
                 student.marks.push_back(randMark);
             }
             randExMark = rand() % 10 + 1;
-            std::cout << "Generuotas egzamino pazymys: " << randMark << "\n";
-            student.examMark = randMark;
+            std::cout << "Generuotas egzamino pazymys: " << randExMark << "\n";
+            student.examMark = randExMark;
             student.vid = Mean(student);
             student.median = Median(student);
             grupe.push_back(student);
@@ -136,8 +136,8 @@ int main()
                 student.marks.push_back(randMark);
             }
             randExMark = rand() % 10 + 1;
-            std::cout << "Generuotas egzamino pazymys: " << randMark << "\n";
-            student.examMark = randMark;
+            std::cout << "Generuotas egzamino pazymys: " << randExMark << "\n";
+            student.examMark = randExMark;
             student.vid = Mean(student);
             student.median = Median(student);
             grupe.push_back(student);
@@ -150,18 +150,25 @@ int main()
             else {
                 std::string temp;
                 std::getline(file, temp);
-                while (!file==0) {
+                std::stringstream ss(temp);
+                int counter = 0;
+                while (ss >> temp) {
+                    counter++;
+                }
+                while (file) {
                     Student student;
                     file >> student.name >> student.surname;
 					int mark;
-					while (file >> mark) {
+					for (int i = 0; i < counter-3; i++) {
+						file >> mark;
 						student.marks.push_back(mark);
 					}
-					student.examMark = student.marks[student.marks.size() - 1];
-					student.marks.pop_back();
+                    file >> mark;
+					student.examMark = mark;
 					student.vid = Mean(student);
 					student.median = Median(student);
 					grupe.push_back(student);
+                    std::getline(file, temp);
 				}
                 file.close();
             }
