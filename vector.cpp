@@ -75,6 +75,7 @@ bool CompareByMed(Student a, Student b) {
     return a.median < b.median;
 }
 
+
 int main()
 {
     srand(time(NULL));
@@ -88,13 +89,10 @@ int main()
     int randExMark;
     int randMark;
     bool check = true;
-	const string fileName = "studentai1000000.txt";
-    ifstream inputFile(fileName);
-    inputFile.close();
+	string fileName;
+	ifstream inputFile;
 	std::ofstream outputFile("rezultatai.txt");
     outputFile.close();
-    //std::ofstream testuVidurkis("testuVidurkis.txt", std::ios::app);
-	//testuVidurkis.close();
 
     while (check == true) {
         Student student;
@@ -165,13 +163,15 @@ int main()
             grupe.push_back(student);
             break;
         case('4'):
+            cout << "Is kokio failo nuskaityti duomenis?\n";
+			system("dir /b *.txt");
+            cin >> fileName;
             inputFile.open(fileName);
             if (!inputFile) {
                 std::cerr << "Failas nerastas\n";
                 break;
             }
             else {
-                std::chrono::steady_clock::time_point startTime = std::chrono::steady_clock::now();
                 string temp;
                 getline(inputFile, temp);
                 stringstream ss(temp);
@@ -195,11 +195,6 @@ int main()
                     getline(inputFile, temp);
                 }
                 inputFile.close();
-    //            std::chrono::steady_clock::time_point endTime = std::chrono::steady_clock::now();
-    //            cout << "Reading time: " << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "ms\n";
-    //            testuVidurkis.open("testuVidurkis.txt", std::ios::app);
-				//testuVidurkis << fileName << " reading time:" << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "ms\n";
-    //            testuVidurkis.close();
             }
             break;
         case('5'):
