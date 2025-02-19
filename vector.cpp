@@ -88,9 +88,11 @@ int main()
     int randExMark;
     int randMark;
     bool check = true;
-	const string fileName = "kursiokai.txt";
+	const string fileName = "studentai1000000.txt";
     ifstream inputFile(fileName);
     inputFile.close();
+	std::ofstream outputFile("rezultatai.txt");
+    outputFile.close();
     //std::ofstream testuVidurkis("testuVidurkis.txt", std::ios::app);
 	//testuVidurkis.close();
 
@@ -231,11 +233,11 @@ int main()
         }
         break;
     }
-	system("cls");
-    cout << setw(17) << left << "Pavarde" << setw(17) << left << "Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
-    cout << "-----------------------------------------------------------------------------------\n";
+	outputFile.open("rezultatai.txt");
+    outputFile << setw(17) << left << "Pavarde" << setw(17) << left << "Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
+    outputFile << "-----------------------------------------------------------------------------------\n";
     for (int i = 0; i < grupe.size(); i++) {
-        cout << setw(17) << left << grupe[i].surname << setw(17) << left << grupe[i].name << setw(20) << left << setprecision(2) << fixed << grupe[i].vid << setw(15) << left << setprecision(2) << fixed << grupe[i].median << "\n";
+        outputFile << setw(17) << left << grupe[i].surname << setw(17) << left << grupe[i].name << setw(20) << left << setprecision(2) << fixed << grupe[i].vid << setw(15) << left << setprecision(2) << fixed << grupe[i].median << "\n";
     }
-
+	outputFile.close();
 }
