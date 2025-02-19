@@ -31,3 +31,13 @@ struct Student {
     float median = 0;
     float vid = 0;
 };
+
+int InputMark();
+int InputMarkNum();
+int InputExamMark();
+float Mean(Student st);
+float Median(Student st);
+bool CompareByName(Student a, Student b);
+bool CompareBySurname(Student a, Student b);
+bool CompareByVid(Student a, Student b);
+bool CompareByMed(Student a, Student b);
