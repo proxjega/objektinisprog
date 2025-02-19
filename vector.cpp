@@ -89,8 +89,10 @@ int main()
     int randMark;
     bool check = true;
 	const string fileName = "kursiokai.txt";
-    ifstream file(fileName);
-	file.close();
+    ifstream inputFile(fileName);
+    inputFile.close();
+    //std::ofstream testuVidurkis("testuVidurkis.txt", std::ios::app);
+	//testuVidurkis.close();
 
     while (check == true) {
         Student student;
@@ -161,42 +163,48 @@ int main()
             grupe.push_back(student);
             break;
         case('4'):
-			file.open(fileName);
-            if (!file) {
+            inputFile.open(fileName);
+            if (!inputFile) {
                 std::cerr << "Failas nerastas\n";
                 break;
             }
             else {
+                std::chrono::steady_clock::time_point startTime = std::chrono::steady_clock::now();
                 string temp;
-                getline(file, temp);
+                getline(inputFile, temp);
                 stringstream ss(temp);
                 int counter = 0;
                 while (ss >> temp) {
                     counter++;
                 }
-                while (file) {
+                while (inputFile) {
                     Student student;
-                    file >> student.name >> student.surname;
+                    inputFile >> student.name >> student.surname;
                     int mark = 0;
                     for (int i = 0; i < counter - 3; i++) {
-                        file >> mark;
+                        inputFile >> mark;
                         student.marks.push_back(mark);
                     }
-                    file >> mark;
+                    inputFile >> mark;
                     student.examMark = mark;
                     student.vid = Mean(student);
                     student.median = Median(student);
                     grupe.push_back(student);
-                    getline(file, temp);
+                    getline(inputFile, temp);
                 }
-                file.close();
+                inputFile.close();
+    //            std::chrono::steady_clock::time_point endTime = std::chrono::steady_clock::now();
+    //            cout << "Reading time: " << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "ms\n";
+    //            testuVidurkis.open("testuVidurkis.txt", std::ios::app);
+				//testuVidurkis << fileName << " reading time:" << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "ms\n";
+    //            testuVidurkis.close();
             }
             break;
         case('5'):
             check = false;
             break;
         default:
-            cout << "Iveskite tinkama skaiciu nuo 1 iki 4\n";
+            cout << "Iveskite tinkama skaiciu nuo 1 iki 5\n";
             continue;
         }
     }
