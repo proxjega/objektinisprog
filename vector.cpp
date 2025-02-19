@@ -179,22 +179,26 @@ int main()
                 while (ss >> temp) {
                     counter++;
                 }
-                while (inputFile) {
+				stringstream buffer;
+				buffer << inputFile.rdbuf();
+                inputFile.close();
+                while (buffer) {
+                    if (buffer.eof()) {
+                        break;
+                    }
                     Student student;
-                    inputFile >> student.name >> student.surname;
+                    buffer >> student.name >> student.surname;
                     int mark = 0;
                     for (int i = 0; i < counter - 3; i++) {
-                        inputFile >> mark;
+                        buffer >> mark;
                         student.marks.push_back(mark);
                     }
-                    inputFile >> mark;
+                    buffer >> mark;
                     student.examMark = mark;
                     student.vid = Mean(student);
                     student.median = Median(student);
                     grupe.push_back(student);
-                    getline(inputFile, temp);
                 }
-                inputFile.close();
             }
             break;
         case('5'):
