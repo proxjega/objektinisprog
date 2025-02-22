@@ -3,6 +3,7 @@
 int main()
 {
     _setmode(_fileno(stdout), _O_U8TEXT);
+    _setmode(_fileno(stderr), _O_U8TEXT);
     srand(time(NULL));
     vector<Student> grupe;
     wstring names[5] = { L"name1", L"name2", L"name3", L"name4", L"name5" };
@@ -33,18 +34,36 @@ int main()
             wcin >> student.surname;
             wcout << L"Įveskite pažymius (0 - pabaigti)\n";
             while (true) {
-                int mark = InputMark();
-                if (mark == 0) {
-                    if (student.marks.size() != 0) {
-                        break;
+                try {
+                    int mark = InputMark();
+                    if (mark == 0) {
+                        if (student.marks.size() != 0) {
+                            break;
+                        }
+                        else throw L"Įveskite bent vieną pažymį";
+                        continue;
                     }
-                    else wcout << L"Įveskite bent vieną pažymį\n";
+                    student.marks.push_back(mark);
+                }
+                catch (const wchar_t* e) {
+					wcerr << e << endl;
                     continue;
                 }
-                student.marks.push_back(mark);
+				catch (...) {
+					wcerr << L"Nežinoma klaida" << endl;
+					continue;
+				}
             }
             wcout << L"Įveskite egzamino pažymį:\n";
-            student.examMark = InputExamMark();
+            try {
+                student.examMark = InputExamMark();
+            }
+			catch (const wchar_t* e) {
+				wcerr << e << endl;
+			}
+            catch (...) {
+                wcerr << L"Nežinoma klaida" << endl;
+            }
             student.vid = Mean(student);
             student.median = Median(student);
             grupe.push_back(student);
@@ -158,7 +177,7 @@ int main()
         break;
     }
     wstringstream output;
-    output << setw(17) << left << "Pavardė" << setw(17) << left << "Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
+    output << setw(17) << left << L"Pavardė" << setw(17) << left << L"Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
     output << "-----------------------------------------------------------------------------------\n";
     for (int i = 0; i < grupe.size(); i++) {
         output << setw(17) << left << grupe[i].surname << setw(17) << left << grupe[i].name << setw(20) << left << setprecision(2) << fixed << grupe[i].vid << setw(15) << left << setprecision(2) << fixed << grupe[i].median << "\n";

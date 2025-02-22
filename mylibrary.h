@@ -11,6 +11,8 @@
 #include <chrono>
 #include <fcntl.h>
 #include <io.h>
+#include <locale>
+#include <codecvt>
 
 using std::cout;
 using std::cin;
@@ -30,6 +32,8 @@ using std::wstringstream;
 using std::wstring;
 using std::wifstream;
 using std::wofstream;
+using std::wcerr;
+using std::cerr;
 
 struct Student {
     std::wstring name;
