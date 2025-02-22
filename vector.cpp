@@ -156,11 +156,15 @@ int main()
         }
         break;
     }
-	outputFile.open("rezultatai.txt");
-    outputFile << setw(17) << left << "Pavarde" << setw(17) << left << "Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
-    outputFile << "-----------------------------------------------------------------------------------\n";
+    stringstream output;
+    output << setw(17) << left << "Pavarde" << setw(17) << left << "Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
+    output << "-----------------------------------------------------------------------------------\n";
     for (int i = 0; i < grupe.size(); i++) {
-        outputFile << setw(17) << left << grupe[i].surname << setw(17) << left << grupe[i].name << setw(20) << left << setprecision(2) << fixed << grupe[i].vid << setw(15) << left << setprecision(2) << fixed << grupe[i].median << "\n";
+        output << setw(17) << left << grupe[i].surname << setw(17) << left << grupe[i].name << setw(20) << left << setprecision(2) << fixed << grupe[i].vid << setw(15) << left << setprecision(2) << fixed << grupe[i].median << "\n";
     }
-	outputFile.close();
+    outputFile.open("rezultatai.txt");
+	outputFile << output.str();
+    outputFile.close();
+	return 0;
+   
 }
