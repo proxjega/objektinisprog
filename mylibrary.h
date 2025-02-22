@@ -9,6 +9,8 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
+#include <fcntl.h>
+#include <io.h>
 
 using std::cout;
 using std::cin;
@@ -22,6 +24,12 @@ using std::left;
 using std::setw;
 using std::setprecision;
 using std::fixed;
+using std::wcout;
+using std::wcin;
+using std::wstringstream;
+using std::wstring;
+using std::wifstream;
+using std::wofstream;
 
 struct Student {
     std::string name;

@@ -2,6 +2,7 @@
 
 int main()
 {
+    _setmode(_fileno(stdout), _O_U8TEXT);
     srand(time(NULL));
     vector<Student> grupe;
     string names[5] = { "name1", "name2", "name3", "name4", "name5" };
@@ -20,48 +21,48 @@ int main()
 
     while (check == true) {
         Student student;
-        cout << "---------------------------------\nMENU\n";
-        cout << "1 - ranka ivesti duomenis\n2 - generuoti pazymius\n3 - generuoti ir pazymius ir studentu vardus, pavardes\n4 - ivesti duomenis is failo\n5 - baigti darba\n---------------------------------\n";
+        std::wcout << "---------------------------------\nMENU\n";
+        std::wcout << L"1 - ranka įvesti duomenis\n2 - generuoti pažymius\n3 - generuoti ir pažymius ir studentų vardus, pavardės\n4 - įvesti duomenis iš failo\n5 - baigti darbą\n---------------------------------\n";
         cin >> menu;
         switch (menu)
         {
         case('1'):
-            cout << "Iveskite studento varda:\n";
+            cout << "Įveskite studento vardą:\n";
             cin >> student.name;
-            cout << "Iveskite studento pavarde:\n";
+            cout << "Įveskite studento pavardę:\n";
             cin >> student.surname;
-            cout << "Iveskite pazymius (0 - pabaigti)\n";
+            cout << "Įveskite pažymius (0 - pabaigti)\n";
             while (true) {
                 int mark = InputMark();
                 if (mark == 0) {
                     if (student.marks.size() != 0) {
                         break;
                     }
-                    else cout << "Iveskite bent viena pazymi\n";
+                    else cout << "Įveskite bent vieną pažymį\n";
                     continue;
                 }
                 student.marks.push_back(mark);
             }
-            cout << "Iveskite egzamino pazymi:\n";
+            cout << "Įveskite egzamino pažymį:\n";
             student.examMark = InputExamMark();
             student.vid = Mean(student);
             student.median = Median(student);
             grupe.push_back(student);
             break;
         case('2'):
-            cout << "Iveskite studento varda:\n";
+            cout << "Įveskite studento vardą:\n";
             cin >> student.name;
-            cout << "Iveskite studento pavarde:\n";
+            cout << "Įveskite studento pavardę:\n";
             cin >> student.surname;
-            cout << "Kiek pazymiu generuoti?\n";
+            cout << "Kiek pažymių generuoti?\n";
             markNum = InputMarkNum();
             for (int i = 0; i < markNum; i++) {
                 randMark = rand() % 10 + 1;
-                cout << "Generuotas pazymys: " << randMark << "\n";
+                cout << "Generuotas pažymys: " << randMark << "\n";
                 student.marks.push_back(randMark);
             }
             randExMark = rand() % 10 + 1;
-            cout << "Generuotas egzamino pazymys: " << randExMark << "\n";
+            cout << "Generuotas egzamino pažymys: " << randExMark << "\n";
             student.examMark = randExMark;
             student.vid = Mean(student);
             student.median = Median(student);
@@ -71,23 +72,23 @@ int main()
             student.name = names[rand() % 5];
             cout << "Generuotas vardas: " << student.name << endl;
             student.surname = surnames[rand() % 5];
-            cout << "Generuota pavarde: " << student.surname << endl;
-            cout << "Kiek pazymiu generuoti?\n";
+            cout << "Generuota pavardė: " << student.surname << endl;
+            cout << "Kiek pažymiu generuoti?\n";
             markNum = InputMarkNum();
             for (int i = 0; i < markNum; i++) {
                 randMark = rand() % 10 + 1;
-                cout << "Generuotas pazymys: " << randMark << "\n";
+                cout << "Generuotas pažymys: " << randMark << "\n";
                 student.marks.push_back(randMark);
             }
             randExMark = rand() % 10 + 1;
-            cout << "Generuotas egzamino pazymys: " << randExMark << "\n";
+            cout << "Generuotas egzamino pažymys: " << randExMark << "\n";
             student.examMark = randExMark;
             student.vid = Mean(student);
             student.median = Median(student);
             grupe.push_back(student);
             break;
         case('4'):
-            cout << "Is kokio failo nuskaityti duomenis?\n";
+            cout << "Iš kokio failo nuskaityti duomenis?\n";
 			system("dir /b *.txt");
             cin >> fileName;
             inputFile.open(fileName);
@@ -129,11 +130,11 @@ int main()
             check = false;
             break;
         default:
-            cout << "Iveskite tinkama skaiciu nuo 1 iki 5\n";
+            cout << "Įveskite tinkamą skaičių nuo 1 iki 5\n";
             continue;
         }
     }
-	cout << "Pagal ka rusiuoti studentus? (1 - pagal varda, 2 - pagal pavarde, 3 - pagal galutini bala (vid.), 4 - pagal galutini bala (med.))\n";
+	cout << "Pagal ką rušiuoti studentus? (1 - pagal vardą, 2 - pagal pavardę, 3 - pagal galutinį balą (vid.), 4 - pagal galutinį balą (med.))\n";
     while (true) {
         cin >> menu;
         switch (menu)
@@ -151,13 +152,13 @@ int main()
             sort(grupe.begin(), grupe.end(), CompareByMed);
             break;
         default:
-            cout << "Iveskite tinkama skaiciu nuo 1 iki 4\n";
+            cout << "Įveskite tinkama skaičių nuo 1 iki 4\n";
             continue;
         }
         break;
     }
     stringstream output;
-    output << setw(17) << left << "Pavarde" << setw(17) << left << "Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
+    output << setw(17) << left << "Pavardė" << setw(17) << left << "Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
     output << "-----------------------------------------------------------------------------------\n";
     for (int i = 0; i < grupe.size(); i++) {
         output << setw(17) << left << grupe[i].surname << setw(17) << left << grupe[i].name << setw(20) << left << setprecision(2) << fixed << grupe[i].vid << setw(15) << left << setprecision(2) << fixed << grupe[i].median << "\n";

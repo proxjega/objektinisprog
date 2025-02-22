@@ -1,4 +1,4 @@
-#include "funkcijos.h"
+﻿#include "funkcijos.h"
 
 int InputMark() {
     int value;
@@ -7,7 +7,7 @@ int InputMark() {
             return value;
         }
         else {
-            cout << "\007Iveskite tinkama pazymi nuo 1 iki 10 (0 - pabaigti)" << endl;
+            cout << "\007Įveskite tinkamą pažymį nuo 1 iki 10 (0 - pabaigti)" << endl;
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
@@ -21,7 +21,7 @@ int InputMarkNum() {
             return value;
         }
         else {
-            cout << "\007Iveskite tinkama pazymiu skaiciu" << endl;
+            cout << "\007Įveskite tinkamą pažymių skaičių" << endl;
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
@@ -35,7 +35,7 @@ int InputExamMark() {
             return value;
         }
         else {
-            cout << "\007Iveskite tinkama pazymi nuo 1 iki 10" << endl;
+            cout << "\007Įveskite tinkamą pažymį nuo 1 iki 10" << endl;
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
