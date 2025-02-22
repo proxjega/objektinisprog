@@ -165,6 +165,7 @@ int main()
     outputFile.open("rezultatai.txt");
 	outputFile << output.str();
     outputFile.close();
+    system("notepad \"rezultatai.txt\"");
 	return 0;
    
 }
