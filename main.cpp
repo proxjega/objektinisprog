@@ -17,7 +17,8 @@ int main()
     bool check = true;
 	wstring fileName;
 	wifstream inputFile;
-	wofstream outputFile("rezultatai.txt");
+	wofstream outputFile(L"rezultatai.txt");
+    outputFile.imbue(std::locale(outputFile.getloc(), new std::codecvt_utf8<wchar_t>));
     outputFile.close();
 
     while (check == true) {
@@ -180,7 +181,7 @@ int main()
     output << setw(17) << left << L"Pavardė" << setw(17) << left << L"Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
     output << "-----------------------------------------------------------------------------------\n";
     for (int i = 0; i < grupe.size(); i++) {
-        output << setw(17) << left << grupe[i].surname << setw(17) << left << grupe[i].name << setw(20) << left << setprecision(2) << fixed << grupe[i].vid << setw(15) << left << setprecision(2) << fixed << grupe[i].median << "\n";
+        output << setw(17) << left << grupe[i].surname << setw(17) << left << grupe[i].name << setw(20) << left << setprecision(2) << fixed << grupe[i].vid << setw(15) << left << setprecision(2) << fixed << grupe[i].median << L"\n";
     }
     outputFile.open("rezultatai.txt");
 	outputFile << output.str();
