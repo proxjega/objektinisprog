@@ -32,8 +32,8 @@ using std::wifstream;
 using std::wofstream;
 
 struct Student {
-    std::string name;
-    std::string surname;
+    std::wstring name;
+    std::wstring surname;
     std::vector<int>marks;
     int examMark = 0;
     float median = 0;

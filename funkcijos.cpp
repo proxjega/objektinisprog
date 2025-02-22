@@ -7,7 +7,7 @@ int InputMark() {
             return value;
         }
         else {
-            cout << "\007Įveskite tinkamą pažymį nuo 1 iki 10 (0 - pabaigti)" << endl;
+            wcout << L"\007Įveskite tinkamą pažymį nuo 1 iki 10 (0 - pabaigti)" << endl;
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }

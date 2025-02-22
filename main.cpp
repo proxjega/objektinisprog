@@ -5,8 +5,8 @@ int main()
     _setmode(_fileno(stdout), _O_U8TEXT);
     srand(time(NULL));
     vector<Student> grupe;
-    string names[5] = { "name1", "name2", "name3", "name4", "name5" };
-    string surnames[5] = { "surname1", "surname2", "surname3", "surname4", "surname5" };
+    wstring names[5] = { L"name1", L"name2", L"name3", L"name4", L"name5" };
+    wstring surnames[5] = { L"surname1", L"surname2", L"surname3", L"surname4", L"surname5" };
     float galutinisVid = 0;
     float mediana = 0;
     char menu;
@@ -14,55 +14,55 @@ int main()
     int randExMark;
     int randMark;
     bool check = true;
-	string fileName;
-	ifstream inputFile;
-	std::ofstream outputFile("rezultatai.txt");
+	wstring fileName;
+	wifstream inputFile;
+	wofstream outputFile("rezultatai.txt");
     outputFile.close();
 
     while (check == true) {
         Student student;
-        std::wcout << "---------------------------------\nMENU\n";
-        std::wcout << L"1 - ranka įvesti duomenis\n2 - generuoti pažymius\n3 - generuoti ir pažymius ir studentų vardus, pavardės\n4 - įvesti duomenis iš failo\n5 - baigti darbą\n---------------------------------\n";
+        wcout << "---------------------------------\nMENU\n";
+        wcout << L"1 - ranka įvesti duomenis\n2 - generuoti pažymius\n3 - generuoti ir pažymius ir studentų vardus, pavardės\n4 - įvesti duomenis iš failo\n5 - baigti darbą\n---------------------------------\n";
         cin >> menu;
         switch (menu)
         {
         case('1'):
-            cout << "Įveskite studento vardą:\n";
-            cin >> student.name;
-            cout << "Įveskite studento pavardę:\n";
-            cin >> student.surname;
-            cout << "Įveskite pažymius (0 - pabaigti)\n";
+            wcout << L"Įveskite studento vardą:\n";
+            wcin >> student.name;
+            wcout << L"Įveskite studento pavardę:\n";
+            wcin >> student.surname;
+            wcout << L"Įveskite pažymius (0 - pabaigti)\n";
             while (true) {
                 int mark = InputMark();
                 if (mark == 0) {
                     if (student.marks.size() != 0) {
                         break;
                     }
-                    else cout << "Įveskite bent vieną pažymį\n";
+                    else wcout << L"Įveskite bent vieną pažymį\n";
                     continue;
                 }
                 student.marks.push_back(mark);
             }
-            cout << "Įveskite egzamino pažymį:\n";
+            wcout << L"Įveskite egzamino pažymį:\n";
             student.examMark = InputExamMark();
             student.vid = Mean(student);
             student.median = Median(student);
             grupe.push_back(student);
             break;
         case('2'):
-            cout << "Įveskite studento vardą:\n";
-            cin >> student.name;
-            cout << "Įveskite studento pavardę:\n";
-            cin >> student.surname;
-            cout << "Kiek pažymių generuoti?\n";
+            wcout << L"Įveskite studento vardą:\n";
+            wcin >> student.name;
+            wcout << L"Įveskite studento pavardę:\n";
+            wcin >> student.surname;
+            wcout << L"Kiek pažymių generuoti?\n";
             markNum = InputMarkNum();
             for (int i = 0; i < markNum; i++) {
                 randMark = rand() % 10 + 1;
-                cout << "Generuotas pažymys: " << randMark << "\n";
+                wcout << L"Generuotas pažymys: " << randMark << "\n";
                 student.marks.push_back(randMark);
             }
             randExMark = rand() % 10 + 1;
-            cout << "Generuotas egzamino pažymys: " << randExMark << "\n";
+            wcout << L"Generuotas egzamino pažymys: " << randExMark << "\n";
             student.examMark = randExMark;
             student.vid = Mean(student);
             student.median = Median(student);
@@ -70,41 +70,41 @@ int main()
             break;
         case('3'):
             student.name = names[rand() % 5];
-            cout << "Generuotas vardas: " << student.name << endl;
+            wcout << L"Generuotas vardas: " << student.name << endl;
             student.surname = surnames[rand() % 5];
-            cout << "Generuota pavardė: " << student.surname << endl;
-            cout << "Kiek pažymiu generuoti?\n";
+            wcout << L"Generuota pavardė: " << student.surname << endl;
+            wcout << L"Kiek pažymiu generuoti?\n";
             markNum = InputMarkNum();
             for (int i = 0; i < markNum; i++) {
                 randMark = rand() % 10 + 1;
-                cout << "Generuotas pažymys: " << randMark << "\n";
+                wcout << L"Generuotas pažymys: " << randMark << "\n";
                 student.marks.push_back(randMark);
             }
             randExMark = rand() % 10 + 1;
-            cout << "Generuotas egzamino pažymys: " << randExMark << "\n";
+            wcout << L"Generuotas egzamino pažymys: " << randExMark << "\n";
             student.examMark = randExMark;
             student.vid = Mean(student);
             student.median = Median(student);
             grupe.push_back(student);
             break;
         case('4'):
-            cout << "Iš kokio failo nuskaityti duomenis?\n";
+            wcout << L"Iš kokio failo nuskaityti duomenis?\n";
 			system("dir /b *.txt");
-            cin >> fileName;
+            wcin >> fileName;
             inputFile.open(fileName);
             if (!inputFile) {
                 std::cerr << "Failas nerastas\n";
                 break;
             }
             else {
-                string temp;
+                wstring temp;
                 getline(inputFile, temp);
-                stringstream ss(temp);
+                wstringstream ss(temp);
                 int counter = 0;
                 while (ss >> temp) {
                     counter++;
                 }
-				stringstream buffer;
+				wstringstream buffer;
 				buffer << inputFile.rdbuf();
                 inputFile.close();
                 while (buffer) {
@@ -130,11 +130,11 @@ int main()
             check = false;
             break;
         default:
-            cout << "Įveskite tinkamą skaičių nuo 1 iki 5\n";
+            wcout << L"Įveskite tinkamą skaičių nuo 1 iki 5\n";
             continue;
         }
     }
-	cout << "Pagal ką rušiuoti studentus? (1 - pagal vardą, 2 - pagal pavardę, 3 - pagal galutinį balą (vid.), 4 - pagal galutinį balą (med.))\n";
+	wcout << L"Pagal ką rušiuoti studentus? (1 - pagal vardą, 2 - pagal pavardę, 3 - pagal galutinį balą (vid.), 4 - pagal galutinį balą (med.))\n";
     while (true) {
         cin >> menu;
         switch (menu)
@@ -152,12 +152,12 @@ int main()
             sort(grupe.begin(), grupe.end(), CompareByMed);
             break;
         default:
-            cout << "Įveskite tinkama skaičių nuo 1 iki 4\n";
+            wcout << L"Įveskite tinkama skaičių nuo 1 iki 4\n";
             continue;
         }
         break;
     }
-    stringstream output;
+    wstringstream output;
     output << setw(17) << left << "Pavardė" << setw(17) << left << "Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
     output << "-----------------------------------------------------------------------------------\n";
     for (int i = 0; i < grupe.size(); i++) {

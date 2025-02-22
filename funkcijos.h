@@ -8,10 +8,11 @@ using std::cout;
 using std::endl;
 using std::vector;
 using std::sort;
+using std::wcout;
 
 struct Student {
-    std::string name;
-    std::string surname;
+    std::wstring name;
+    std::wstring surname;
     std::vector<int>marks;
     int examMark = 0;
     float median = 0;
