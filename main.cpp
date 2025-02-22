@@ -56,14 +56,19 @@ int main()
 				}
             }
             wcout << L"Įveskite egzamino pažymį:\n";
-            try {
-                student.examMark = InputExamMark();
-            }
-			catch (const wchar_t* e) {
-				wcerr << e << endl;
-			}
-            catch (...) {
-                wcerr << L"Nežinoma klaida" << endl;
+            while (true) {
+                try {
+                    student.examMark = InputExamMark();
+                    break;
+                }
+                catch (const wchar_t* e) {
+                    wcerr << e << endl;
+                    continue;
+                }
+                catch (...) {
+                    wcerr << L"Nežinoma klaida" << endl;
+                    continue;
+                }
             }
             student.vid = Mean(student);
             student.median = Median(student);
@@ -75,7 +80,20 @@ int main()
             wcout << L"Įveskite studento pavardę:\n";
             wcin >> student.surname;
             wcout << L"Kiek pažymių generuoti?\n";
-            markNum = InputMarkNum();
+            while (true) {
+				try {
+					markNum = InputMarkNum();
+					break;
+				}
+				catch (const wchar_t* e) {
+					wcerr << e << endl;
+					continue;
+				}
+				catch (...) {
+					wcerr << L"Nežinoma klaida" << endl;
+					continue;
+				}
+            }
             for (int i = 0; i < markNum; i++) {
                 randMark = rand() % 10 + 1;
                 wcout << L"Generuotas pažymys: " << randMark << "\n";
@@ -94,7 +112,20 @@ int main()
             student.surname = surnames[rand() % 5];
             wcout << L"Generuota pavardė: " << student.surname << endl;
             wcout << L"Kiek pažymiu generuoti?\n";
-            markNum = InputMarkNum();
+            while (true) {
+                try {
+                    markNum = InputMarkNum();
+                    break;
+                }
+				catch (const wchar_t* e) {
+					wcerr << e << endl;
+					continue;
+				}
+				catch (...) {
+					wcerr << L"Nežinoma klaida" << endl;
+					continue;
+				}
+            }
             for (int i = 0; i < markNum; i++) {
                 randMark = rand() % 10 + 1;
                 wcout << L"Generuotas pažymys: " << randMark << "\n";
@@ -111,40 +142,21 @@ int main()
             wcout << L"Iš kokio failo nuskaityti duomenis?\n";
 			system("dir /b *.txt");
             wcin >> fileName;
-            inputFile.open(fileName);
-            if (!inputFile) {
-                std::cerr << "Failas nerastas\n";
+            try {
+                inputFile.open(fileName);
+				if (!inputFile) {
+					throw L"Failas nerastas";
+				}
+                Readfile(inputFile, grupe);
+            }
+			catch (const wchar_t* e) {
+				wcerr << e << endl;
+				break;
+			}
+			catch (...) {
+				wcerr << L"Nežinoma klaida" << endl;
                 break;
-            }
-            else {
-                wstring temp;
-                getline(inputFile, temp);
-                wstringstream ss(temp);
-                int counter = 0;
-                while (ss >> temp) {
-                    counter++;
-                }
-				wstringstream buffer;
-				buffer << inputFile.rdbuf();
-                inputFile.close();
-                while (buffer) {
-                    if (buffer.eof()) {
-                        break;
-                    }
-                    Student student;
-                    buffer >> student.name >> student.surname;
-                    int mark = 0;
-                    for (int i = 0; i < counter - 3; i++) {
-                        buffer >> mark;
-                        student.marks.push_back(mark);
-                    }
-                    buffer >> mark;
-                    student.examMark = mark;
-                    student.vid = Mean(student);
-                    student.median = Median(student);
-                    grupe.push_back(student);
-                }
-            }
+			}
             break;
         case('5'):
             check = false;
@@ -188,5 +200,4 @@ int main()
     outputFile.close();
     system("notepad \"rezultatai.txt\"");
 	return 0;
-   
 }

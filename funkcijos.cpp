@@ -1,4 +1,4 @@
-﻿#include "funkcijos.h"
+﻿#include "mylibrary.h"
 
 int InputMark() {
     int value;
@@ -73,4 +73,34 @@ bool CompareByVid(Student a, Student b) {
 
 bool CompareByMed(Student a, Student b) {
     return a.median < b.median;
+}
+
+void Readfile(std::wifstream& inputFile, vector<Student>& grupe) {
+    wstring temp;
+    getline(inputFile, temp);
+    wstringstream ss(temp);
+    int counter = 0;
+    while (ss >> temp) {
+        counter++;
+    }
+    wstringstream buffer;
+    buffer << inputFile.rdbuf();
+    inputFile.close();
+    while (buffer) {
+        if (buffer.eof()) {
+            break;
+        }
+        Student student;
+        buffer >> student.name >> student.surname;
+        int mark = 0;
+        for (int i = 0; i < counter - 3; i++) {
+            buffer >> mark;
+            student.marks.push_back(mark);
+        }
+        buffer >> mark;
+        student.examMark = mark;
+        student.vid = Mean(student);
+        student.median = Median(student);
+        grupe.push_back(student);
+    }
 }

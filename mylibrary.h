@@ -53,3 +53,4 @@ bool CompareByName(Student a, Student b);
 bool CompareBySurname(Student a, Student b);
 bool CompareByVid(Student a, Student b);
 bool CompareByMed(Student a, Student b);
+void Readfile(std::wifstream& inputFile, vector<Student>& grupe);
