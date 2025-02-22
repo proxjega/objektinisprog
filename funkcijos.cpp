@@ -1,4 +1,4 @@
-﻿#include "mylibrary.h"
+﻿#include "funkcijos.h"
 
 int InputMark() {
     int value;

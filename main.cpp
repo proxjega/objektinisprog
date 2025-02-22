@@ -29,6 +29,7 @@ int main()
         switch (menu)
         {
         case('1'):
+			system("cls");
             wcout << L"Įveskite studento vardą:\n";
             wcin >> student.name;
             wcout << L"Įveskite studento pavardę:\n";
@@ -41,7 +42,7 @@ int main()
                         if (student.marks.size() != 0) {
                             break;
                         }
-                        else throw L"Įveskite bent vieną pažymį";
+                        else throw L"\007Įveskite bent vieną pažymį";
                         continue;
                     }
                     student.marks.push_back(mark);
@@ -51,7 +52,7 @@ int main()
                     continue;
                 }
 				catch (...) {
-					wcerr << L"Nežinoma klaida" << endl;
+					wcerr << L"\007Nežinoma klaida" << endl;
 					continue;
 				}
             }
@@ -66,7 +67,7 @@ int main()
                     continue;
                 }
                 catch (...) {
-                    wcerr << L"Nežinoma klaida" << endl;
+                    wcerr << L"\007Nežinoma klaida" << endl;
                     continue;
                 }
             }
@@ -75,6 +76,7 @@ int main()
             grupe.push_back(student);
             break;
         case('2'):
+            system("cls");
             wcout << L"Įveskite studento vardą:\n";
             wcin >> student.name;
             wcout << L"Įveskite studento pavardę:\n";
@@ -90,7 +92,7 @@ int main()
 					continue;
 				}
 				catch (...) {
-					wcerr << L"Nežinoma klaida" << endl;
+					wcerr << L"\007Nežinoma klaida" << endl;
 					continue;
 				}
             }
@@ -107,6 +109,7 @@ int main()
             grupe.push_back(student);
             break;
         case('3'):
+            system("cls");
             student.name = names[rand() % 5];
             wcout << L"Generuotas vardas: " << student.name << endl;
             student.surname = surnames[rand() % 5];
@@ -122,7 +125,7 @@ int main()
 					continue;
 				}
 				catch (...) {
-					wcerr << L"Nežinoma klaida" << endl;
+					wcerr << L"\007Nežinoma klaida" << endl;
 					continue;
 				}
             }
@@ -139,30 +142,34 @@ int main()
             grupe.push_back(student);
             break;
         case('4'):
-            wcout << L"Iš kokio failo nuskaityti duomenis?\n";
+            system("cls");
+            wcout << L"Iš kokio failo nuskaityti duomenis?\n\n";
 			system("dir /b *.txt");
             wcin >> fileName;
             try {
                 inputFile.open(fileName);
 				if (!inputFile) {
-					throw L"Failas nerastas";
+					throw L"\007Failas nerastas";
 				}
                 Readfile(inputFile, grupe);
+				wcout << L"\nDuomenys nuskaityti.\n";
             }
 			catch (const wchar_t* e) {
 				wcerr << e << endl;
 				break;
 			}
 			catch (...) {
-				wcerr << L"Nežinoma klaida" << endl;
+				wcerr << L"\007Nežinoma klaida" << endl;
                 break;
 			}
             break;
         case('5'):
+            system("cls");
             check = false;
             break;
         default:
-            wcout << L"Įveskite tinkamą skaičių nuo 1 iki 5\n";
+            system("cls");
+            wcout << L"\007Įveskite tinkamą skaičių nuo 1 iki 5\n";
             continue;
         }
     }
@@ -184,7 +191,7 @@ int main()
             sort(grupe.begin(), grupe.end(), CompareByMed);
             break;
         default:
-            wcout << L"Įveskite tinkama skaičių nuo 1 iki 4\n";
+            wcout << L"\007Įveskite tinkama skaičių nuo 1 iki 4\n";
             continue;
         }
         break;
