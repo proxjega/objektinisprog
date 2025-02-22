@@ -21,7 +21,7 @@ int InputMarkNum() {
             return value;
         }
         else {
-            cout << "\007Įveskite tinkamą pažymių skaičių" << endl;
+            wcout << L"\007Įveskite tinkamą pažymių skaičių" << endl;
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
@@ -35,7 +35,7 @@ int InputExamMark() {
             return value;
         }
         else {
-            cout << "\007Įveskite tinkamą pažymį nuo 1 iki 10" << endl;
+            wcout << L"\007Įveskite tinkamą pažymį nuo 1 iki 10" << endl;
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
