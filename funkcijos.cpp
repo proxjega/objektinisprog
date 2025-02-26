@@ -113,6 +113,25 @@ void Readfile(std::wifstream& inputFile, vector<Student>& grupe) {
     }
 }
 
+void PushStudent(vector<Student>& kietiakai, vector<Student>& vargsiukai, Student st, bool sortType) {
+    if (sortType == 1) {
+        if (student.vid < 5.0) {
+            vargsiukai.push_back(student);
+        }
+        else {
+            kietiakai.push_back(student);
+        }
+    }
+    else {
+        if (student.median < 5.0) {
+            vargsiukai.push_back(student);
+        }
+        else {
+            kietiakai.push_back(student);
+        }
+    }
+}
+
 void FileGen(int n) {
     string name;
     name = "studentai" + std::to_string(n) + ".txt";

@@ -8,18 +8,7 @@ int main()
     _setmode(_fileno(stderr), _O_U8TEXT);
     srand(time(NULL));
     vector<Student> vargsiukai, kietiakai;
-    wcout << L"Pagal ką rušiuoti studentus? 1 - vidurkis, 0 - mediana\n";
-    try {
-        bool sortType = InputSortType();
-    }
-	catch (const wchar_t* e) {
-		wcerr << e << endl;
-		return 0;
-	}
-	catch (...) {
-		wcerr << L"\007Nežinoma klaida" << endl;
-		return 0;
-	}
+    
     wstring names[5] = { L"name1", L"name2", L"name3", L"name4", L"name5" };
     wstring surnames[5] = { L"surname1", L"surname2", L"surname3", L"surname4", L"surname5" };
     float galutinisVid = 0;
@@ -29,11 +18,25 @@ int main()
     int randExMark;
     int randMark;
     bool check = true;
+    bool sortType = 0;
 	wstring fileName;
 	wifstream inputFile;
 	wofstream outputFile(L"rezultatai.txt");
     outputFile.imbue(std::locale(outputFile.getloc(), new std::codecvt_utf8<wchar_t>));
     outputFile.close();
+
+    wcout << L"Pagal ką rušiuoti studentus? 1 - vidurkis, 0 - mediana\n";
+    try {
+        sortType = InputSortType();
+    }
+    catch (const wchar_t* e) {
+        wcerr << e << endl;
+        return 0;
+    }
+    catch (...) {
+        wcerr << L"\007Nežinoma klaida" << endl;
+        return 0;
+    }
 
     while (check == true) {
         Student student;
@@ -87,7 +90,7 @@ int main()
             }
             student.vid = Mean(student);
             student.median = Median(student);
-            grupe.push_back(student);
+			PushStudent(kietiakai, &vargsiukai, student, sortType);
             break;
         case('2'):
             system("cls");
