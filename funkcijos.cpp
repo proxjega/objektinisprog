@@ -104,3 +104,14 @@ void Readfile(std::wifstream& inputFile, vector<Student>& grupe) {
         grupe.push_back(student);
     }
 }
+
+wifstream FileGen(int n) {
+    string name;
+    name = "studentai" + std::to_string(n) + ".txt";
+	std::ofstream file(name);
+    file << std::setw(17) <<std:: left << L"Pavardė" << setw(17) << left << L"Vardas" <<
+    for (int i = 0; i < n; i++) {
+        
+
+    }
+}

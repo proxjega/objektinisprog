@@ -16,6 +16,8 @@ using std::wcout;
 using std::wstringstream;
 using std::wstring;
 using std::getline;
+using std::wifstream;
+using std::string;
 
 struct Student {
     std::wstring name;
