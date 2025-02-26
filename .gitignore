@@ -361,7 +361,11 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/studentai1000000.txt
-/studentai100000.txt
+
 /rezultatai.txt
+/studentai100.txt
+/studentai1000.txt
 /studentai10000.txt
+/studentai100000.txt
+/studentai1000000.txt
+/studentai10000000.txt

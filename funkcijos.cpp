@@ -104,8 +104,8 @@ void FileGen(int n) {
     string name;
     name = "studentai" + std::to_string(n) + ".txt";
 	std::ofstream file(name);
-    file << setw(17) << left << L"Pavardė" << setw(17) << left << L"Vardas" << setw(10) << left << "ND1"
-        << setw(10) << left << "ND2" << setw(10) << left << "ND3" << setw(10) << left << "ND4" << setw(10) << left << "ND5";
+    file << setw(17) << left << "Pavarde" << setw(17) << left << "Vardas" << setw(10) << left << "ND1"
+        << setw(10) << left << "ND2" << setw(10) << left << "ND3" << setw(10) << left << "ND4" << setw(10) << left << "ND5" << setw(9) << left << "Egzaminas";
    /* for (int i = 0; i < n; i++) {
         
 
