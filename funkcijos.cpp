@@ -100,13 +100,14 @@ void Readfile(std::wifstream& inputFile, vector<Student>& grupe) {
     }
 }
 
-//wifstream FileGen(int n) {
-//    string name;
-//    name = "studentai" + std::to_string(n) + ".txt";
-//	std::ofstream file(name);
-//    file << std::setw(17) <<std:: left << L"Pavardė" << setw(17) << left << L"Vardas" <<
-//    for (int i = 0; i < n; i++) {
-//        
-//
-//    }
-//}
+void FileGen(int n) {
+    string name;
+    name = "studentai" + std::to_string(n) + ".txt";
+	std::ofstream file(name);
+    file << setw(17) << left << L"Pavardė" << setw(17) << left << L"Vardas" << setw(10) << left << "ND1"
+        << setw(10) << left << "ND2" << setw(10) << left << "ND3" << setw(10) << left << "ND4" << setw(10) << left << "ND5";
+   /* for (int i = 0; i < n; i++) {
+        
+
+    }*/
+}

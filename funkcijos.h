@@ -19,6 +19,8 @@ using std::wstring;
 using std::getline;
 using std::wifstream;
 using std::string;
+using std::setw;
+using std::left;
 
 struct Student {
     std::wstring name;

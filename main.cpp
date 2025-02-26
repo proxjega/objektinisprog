@@ -2,6 +2,7 @@
 
 int main()
 {
+    FileGen()
     _setmode(_fileno(stdout), _O_U8TEXT);
     _setmode(_fileno(stderr), _O_U8TEXT);
     srand(time(NULL));
