@@ -104,10 +104,16 @@ void FileGen(int n) {
     string name;
     name = "studentai" + std::to_string(n) + ".txt";
 	std::ofstream file(name);
+
+    std::random_device rd;
+	std::mt19937 mt(rd());
+	std::uniform_int_distribution<int> dist(1, 10);
     file << setw(17) << left << "Pavarde" << setw(17) << left << "Vardas" << setw(10) << left << "ND1"
         << setw(10) << left << "ND2" << setw(10) << left << "ND3" << setw(10) << left << "ND4" << setw(10) << left << "ND5" << setw(9) << left << "Egzaminas";
-   /* for (int i = 0; i < n; i++) {
-        
-
-    }*/
+    for (int i = 0; i < n; i++) {
+        file << endl;
+        file << setw(17) << left << "Pavarde" + std::to_string(dist(mt)) << setw(17) << left << "Vardas" + std::to_string(dist(mt))
+            << setw(10) << left << dist(mt) << setw(10) << left << dist(mt) << setw(10) << left << dist(mt) << setw(10) << left << dist(mt)
+            << setw(10) << left << dist(mt) << setw(9) << left << dist(mt);
+    }
 }

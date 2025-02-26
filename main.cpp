@@ -3,6 +3,7 @@
 int main()
 {
     FileGen(100);
+	system("notepad \"studentai100.txt\"");
     _setmode(_fileno(stdout), _O_U8TEXT);
     _setmode(_fileno(stderr), _O_U8TEXT);
     srand(time(NULL));
