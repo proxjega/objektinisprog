@@ -90,7 +90,7 @@ int main()
             }
             student.vid = Mean(student);
             student.median = Median(student);
-			PushStudent(kietiakai, &vargsiukai, student, sortType);
+			PushStudent(kietiakai, vargsiukai, student, sortType);
             break;
         case('2'):
             system("cls");
@@ -123,7 +123,7 @@ int main()
             student.examMark = randExMark;
             student.vid = Mean(student);
             student.median = Median(student);
-            grupe.push_back(student);
+            PushStudent(kietiakai, vargsiukai, student, sortType);
             break;
         case('3'):
             system("cls");
@@ -156,7 +156,7 @@ int main()
             student.examMark = randExMark;
             student.vid = Mean(student);
             student.median = Median(student);
-            grupe.push_back(student);
+            PushStudent(kietiakai, vargsiukai, student, sortType);
             break;
         case('4'):
             system("cls");
@@ -168,7 +168,7 @@ int main()
 				if (!inputFile) {
 					throw L"\007Failas nerastas";
 				}
-                Readfile(inputFile, grupe);
+                Readfile(inputFile, kietiakai, vargsiukai, sortType);
 				wcout << L"\nDuomenys nuskaityti.\n";
             }
 			catch (const wchar_t* e) {
@@ -196,16 +196,20 @@ int main()
         switch (menu)
         {
         case('1'):
-            sort(grupe.begin(), grupe.end(), CompareByName);
+            sort(kietiakai.begin(), kietiakai.end(), CompareByName);
+            sort(vargsiukai.begin(), vargsiukai.end(), CompareByName);
             break;
         case('2'):
-            sort(grupe.begin(), grupe.end(), CompareBySurname);
+            sort(kietiakai.begin(), kietiakai.end(), CompareBySurname);
+            sort(vargsiukai.begin(), vargsiukai.end(), CompareBySurname);
             break;
         case('3'):
-            sort(grupe.begin(), grupe.end(), CompareByVid);
+            sort(kietiakai.begin(), kietiakai.end(), CompareByVid);
+            sort(vargsiukai.begin(), vargsiukai.end(), CompareByVid);
             break;
         case('4'):
-            sort(grupe.begin(), grupe.end(), CompareByMed);
+            sort(kietiakai.begin(), kietiakai.end(), CompareByMed);
+            sort(vargsiukai.begin(), vargsiukai.end(), CompareByMed);
             break;
         default:
             wcout << L"\007Įveskite tinkama skaičių nuo 1 iki 4\n";

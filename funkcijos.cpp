@@ -43,17 +43,18 @@ int InputExamMark() {
 }
 
 bool InputSortType() {
-	bool value;
-	while (true) {
-		if (cin >> value) {
-			return value;
-		}
-		else {
-			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			throw L"\007Įveskite 0 arba 1";
-		}
-	}
+    bool value;
+    while (true) {
+        if (cin >> value) {
+            return value;
+        }
+        else {
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            throw L"\007Įveskite 0 arba 1";
+        }
+    }
+}
 
 float Mean(Student st) {
     return (std::accumulate(st.marks.begin(), st.marks.end(), 0) * 1.0) / (st.marks.size() * 1.0);
@@ -83,7 +84,7 @@ bool CompareByMed(Student a, Student b) {
     return a.median < b.median;
 }
 
-void Readfile(std::wifstream& inputFile, vector<Student>& grupe) {
+void Readfile(std::wifstream& inputFile, vector<Student>& kietiakai, vector<Student>& vargsiukai, bool sortType) {
     wstring temp;
     getline(inputFile, temp);
     wstringstream ss(temp);
@@ -109,11 +110,11 @@ void Readfile(std::wifstream& inputFile, vector<Student>& grupe) {
         student.examMark = mark;
         student.vid = Mean(student);
         student.median = Median(student);
-        grupe.push_back(student);
+        PushStudent(kietiakai, vargsiukai, student, sortType);
     }
 }
 
-void PushStudent(vector<Student>& kietiakai, vector<Student>& vargsiukai, Student st, bool sortType) {
+void PushStudent(vector<Student>& kietiakai, vector<Student>& vargsiukai, Student student, bool sortType) {
     if (sortType == 1) {
         if (student.vid < 5.0) {
             vargsiukai.push_back(student);
