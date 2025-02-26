@@ -42,6 +42,19 @@ int InputExamMark() {
     }
 }
 
+bool InputSortType() {
+	bool value;
+	while (true) {
+		if (cin >> value) {
+			return value;
+		}
+		else {
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			throw L"\007Įveskite 0 arba 1";
+		}
+	}
+
 float Mean(Student st) {
     return (std::accumulate(st.marks.begin(), st.marks.end(), 0) * 1.0) / (st.marks.size() * 1.0);
 }

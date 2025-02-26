@@ -55,3 +55,4 @@ bool CompareByVid(Student a, Student b);
 bool CompareByMed(Student a, Student b);
 void Readfile(std::wifstream& inputFile, vector<Student>& grupe);
 void FileGen(int n);
+bool InputSortType();
