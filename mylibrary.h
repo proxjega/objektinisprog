@@ -56,4 +56,4 @@ bool CompareByMed(Student a, Student b);
 void Readfile(std::wifstream& inputFile, vector<Student>& kietiakai, vector<Student>& vargsiukai, bool sortType);
 void FileGen(int n);
 bool InputSortType();
-void PushStudent(vector<Student>& kietiakai, vector<Student>& vargsiukai, Student st, bool sortType);
+void PushStudent(vector<Student>& kietiakai, vector<Student>& vargsiukai, Student student, bool sortType);

@@ -32,3 +32,5 @@ struct Student {
     float median = 0;
     float vid = 0;
 };
+
+void PushStudent(vector<Student>& kietiakai, vector<Student>& vargsiukai, Student student, bool sortType);

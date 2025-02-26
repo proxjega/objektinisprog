@@ -7,8 +7,8 @@ int main()
     _setmode(_fileno(stdout), _O_U8TEXT);
     _setmode(_fileno(stderr), _O_U8TEXT);
     srand(time(NULL));
+
     vector<Student> vargsiukai, kietiakai;
-    
     wstring names[5] = { L"name1", L"name2", L"name3", L"name4", L"name5" };
     wstring surnames[5] = { L"surname1", L"surname2", L"surname3", L"surname4", L"surname5" };
     float galutinisVid = 0;
@@ -26,17 +26,21 @@ int main()
     outputFile.close();
 
     wcout << L"Pagal ką rušiuoti studentus? 1 - vidurkis, 0 - mediana\n";
-    try {
-        sortType = InputSortType();
+    while (true) {
+        try {
+            sortType = InputSortType();
+			break;
+        }
+        catch (const wchar_t* e) {
+            wcerr << e << endl;
+            continue;
+        }
+        catch (...) {
+            wcerr << L"\007Nežinoma klaida" << endl;
+			continue;
+        }
     }
-    catch (const wchar_t* e) {
-        wcerr << e << endl;
-        return 0;
-    }
-    catch (...) {
-        wcerr << L"\007Nežinoma klaida" << endl;
-        return 0;
-    }
+
 
     while (check == true) {
         Student student;
@@ -220,8 +224,8 @@ int main()
     wstringstream output;
     output << setw(17) << left << L"Pavardė" << setw(17) << left << L"Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
     output << "-----------------------------------------------------------------------------------\n";
-    for (int i = 0; i < grupe.size(); i++) {
-        output << setw(17) << left << grupe[i].surname << setw(17) << left << grupe[i].name << setw(20) << left << setprecision(2) << fixed << grupe[i].vid << setw(15) << left << setprecision(2) << fixed << grupe[i].median << L"\n";
+    for (int i = 0; i < kietiakai.size(); i++) {
+        output << setw(17) << left << kietiakai[i].surname << setw(17) << left << kietiakai[i].name << setw(20) << left << setprecision(2) << fixed << kietiakai[i].vid << setw(15) << left << setprecision(2) << fixed << kietiakai[i].median << L"\n";
     }
     outputFile.open("rezultatai.txt");
 	outputFile << output.str();

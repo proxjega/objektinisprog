@@ -100,7 +100,7 @@ void Readfile(std::wifstream& inputFile, vector<Student>& kietiakai, vector<Stud
             break;
         }
         Student student;
-        buffer >> student.name >> student.surname;
+        buffer >> student.surname >> student.name;
         int mark = 0;
         for (int i = 0; i < counter - 3; i++) {
             buffer >> mark;
