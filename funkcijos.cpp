@@ -112,8 +112,9 @@ void FileGen(int n) {
         << setw(10) << left << "ND2" << setw(10) << left << "ND3" << setw(10) << left << "ND4" << setw(10) << left << "ND5" << setw(9) << left << "Egzaminas";
     for (int i = 0; i < n; i++) {
         file << endl;
-        file << setw(17) << left << "Pavarde" + std::to_string(dist(mt)) << setw(17) << left << "Vardas" + std::to_string(dist(mt))
+        file << setw(17) << left << "Pavarde" + std::to_string(i+1) << setw(17) << left << "Vardas" + std::to_string(i+1)
             << setw(10) << left << dist(mt) << setw(10) << left << dist(mt) << setw(10) << left << dist(mt) << setw(10) << left << dist(mt)
             << setw(10) << left << dist(mt) << setw(9) << left << dist(mt);
     }
+	file.close();
 }
