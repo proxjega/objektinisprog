@@ -2,8 +2,7 @@
 
 int main()
 {
-    FileGen(10);
-	system("notepad \"studentai10.txt\"");
+
     _setmode(_fileno(stdout), _O_U8TEXT);
     _setmode(_fileno(stderr), _O_U8TEXT);
     srand(time(NULL));
@@ -17,6 +16,7 @@ int main()
     int markNum;
     int randExMark;
     int randMark;
+    int fileGenNum = 100000;
     bool check = true;
     bool sortType = 0;
 	wstring fileName;
@@ -27,8 +27,14 @@ int main()
     wofstream outputFileV(L"vargsiukuRezultatai.txt");
     outputFileV.imbue(std::locale(outputFileV.getloc(), new std::codecvt_utf8<wchar_t>));
     outputFileV.close();
+	std::ofstream testFile("README.md", std::ios::app);
 
-    wcout << L"Pagal ką rušiuoti studentus? 1 - vidurkis, 0 - mediana\n";
+    std::chrono::time_point<std::chrono::system_clock> createFileStart = std::chrono::system_clock::now();
+    FileGen(fileGenNum);
+	std::chrono::time_point<std::chrono::system_clock> createFileEnd = std::chrono::system_clock::now();
+	testFile << "Failo generavimas is " << fileGenNum <<" irasu: " << std::chrono::duration<double>(createFileEnd - createFileStart).count() << " s\n";
+
+    wcout << L"Pagal ką rušiuoti studentus į grupes? 1 - vidurkis, 0 - mediana\n";
     while (true) {
         try {
             sortType = InputSortType();
@@ -43,7 +49,7 @@ int main()
 			continue;
         }
     }
-
+	system("cls");
 
     while (check == true) {
         Student student;
