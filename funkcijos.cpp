@@ -43,12 +43,7 @@ int InputExamMark() {
 }
 
 float Mean(Student st) {
-    float mean = 0;
-    for (int i = 0; i < st.marks.size(); i++) {
-        mean = mean + st.marks[i];
-    }
-    mean = (mean / st.marks.size()) * 0.4 + st.examMark * 0.6;
-    return mean;
+    return (std::accumulate(st.marks.begin(), st.marks.end(), 0) * 1.0) / (st.marks.size() * 1.0);
 }
 
 float Median(Student st) {
@@ -105,13 +100,13 @@ void Readfile(std::wifstream& inputFile, vector<Student>& grupe) {
     }
 }
 
-wifstream FileGen(int n) {
-    string name;
-    name = "studentai" + std::to_string(n) + ".txt";
-	std::ofstream file(name);
-    file << std::setw(17) <<std:: left << L"Pavardė" << setw(17) << left << L"Vardas" <<
-    for (int i = 0; i < n; i++) {
-        
-
-    }
-}
+//wifstream FileGen(int n) {
+//    string name;
+//    name = "studentai" + std::to_string(n) + ".txt";
+//	std::ofstream file(name);
+//    file << std::setw(17) <<std:: left << L"Pavardė" << setw(17) << left << L"Vardas" <<
+//    for (int i = 0; i < n; i++) {
+//        
+//
+//    }
+//}

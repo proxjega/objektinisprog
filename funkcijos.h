@@ -6,6 +6,7 @@
 #include <fstream>
 #include <iomanip>
 #include <sstream>
+#include <numeric>
 
 using std::cin;
 using std::cout;
