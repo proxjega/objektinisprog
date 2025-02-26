@@ -363,9 +363,12 @@ MigrationBackup/
 FodyWeavers.xsd
 
 /rezultatai.txt
+/studentai10.txt
 /studentai100.txt
 /studentai1000.txt
 /studentai10000.txt
 /studentai100000.txt
 /studentai1000000.txt
 /studentai10000000.txt
+/vargsiukuRezultatai.txt
+/kietiakuRezultatai.txt

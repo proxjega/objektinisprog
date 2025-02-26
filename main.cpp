@@ -2,8 +2,8 @@
 
 int main()
 {
-    FileGen(100);
-	system("notepad \"studentai100.txt\"");
+    FileGen(10);
+	system("notepad \"studentai10.txt\"");
     _setmode(_fileno(stdout), _O_U8TEXT);
     _setmode(_fileno(stderr), _O_U8TEXT);
     srand(time(NULL));
@@ -21,9 +21,12 @@ int main()
     bool sortType = 0;
 	wstring fileName;
 	wifstream inputFile;
-	wofstream outputFile(L"rezultatai.txt");
-    outputFile.imbue(std::locale(outputFile.getloc(), new std::codecvt_utf8<wchar_t>));
-    outputFile.close();
+    wofstream outputFileK(L"kietiakuRezultatai.txt");
+    outputFileK.imbue(std::locale(outputFileK.getloc(), new std::codecvt_utf8<wchar_t>));
+    outputFileK.close();
+    wofstream outputFileV(L"vargsiukuRezultatai.txt");
+    outputFileV.imbue(std::locale(outputFileV.getloc(), new std::codecvt_utf8<wchar_t>));
+    outputFileV.close();
 
     wcout << L"Pagal ką rušiuoti studentus? 1 - vidurkis, 0 - mediana\n";
     while (true) {
@@ -221,15 +224,27 @@ int main()
         }
         break;
     }
+
     wstringstream output;
     output << setw(17) << left << L"Pavardė" << setw(17) << left << L"Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
     output << "-----------------------------------------------------------------------------------\n";
     for (int i = 0; i < kietiakai.size(); i++) {
         output << setw(17) << left << kietiakai[i].surname << setw(17) << left << kietiakai[i].name << setw(20) << left << setprecision(2) << fixed << kietiakai[i].vid << setw(15) << left << setprecision(2) << fixed << kietiakai[i].median << L"\n";
     }
-    outputFile.open("rezultatai.txt");
-	outputFile << output.str();
-    outputFile.close();
-    system("notepad \"rezultatai.txt\"");
+    outputFileK.open("kietiakurezultatai.txt");
+	outputFileK << output.str();
+    outputFileK.close();
+    system("notepad \"kietiakurezultatai.txt\"");
+
+    wstringstream output1;
+    output1 << setw(17) << left << L"Pavardė" << setw(17) << left << L"Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
+    output1 << "-----------------------------------------------------------------------------------\n";
+    for (int i = 0; i < vargsiukai.size(); i++) {
+        output1 << setw(17) << left << vargsiukai[i].surname << setw(17) << left << vargsiukai[i].name << setw(20) << left << setprecision(2) << fixed << vargsiukai[i].vid << setw(15) << left << setprecision(2) << fixed << vargsiukai[i].median << L"\n";
+    }
+    outputFileV.open("vargsiukurezultatai.txt");
+    outputFileV << output1.str();
+    outputFileV.close();
+    system("notepad \"vargsiukurezultatai.txt\"");
 	return 0;
 }

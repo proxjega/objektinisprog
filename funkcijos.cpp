@@ -147,7 +147,7 @@ void FileGen(int n) {
         file << endl;
         file << setw(17) << left << "Pavarde" + std::to_string(i+1) << setw(17) << left << "Vardas" + std::to_string(i+1)
             << setw(10) << left << dist(mt) << setw(10) << left << dist(mt) << setw(10) << left << dist(mt) << setw(10) << left << dist(mt)
-            << setw(10) << left << dist(mt) << setw(9) << left << dist(mt);
+            << setw(10) << left << dist(mt) << dist(mt);
     }
 	file.close();
 }
