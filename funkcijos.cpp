@@ -136,7 +136,7 @@ void SortStudentsInGroups(vector<Student>& kietiakai, vector<Student>& vargsiuka
     
 }
 
-void FileGen(int n) {
+string FileGen(int n) {
     string name;
     name = "studentai" + std::to_string(n) + ".txt";
 	std::ofstream file(name);
@@ -152,6 +152,7 @@ void FileGen(int n) {
             << setw(10) << left << dist(mt) << dist(mt);
     }
 	file.close();
+    return name;
 }
 
 void PrintIntoFile(vector<Student> group, wstring fileName) {
@@ -167,4 +168,24 @@ void PrintIntoFile(vector<Student> group, wstring fileName) {
     outputFile.imbue(std::locale(outputFile.getloc(), new std::codecvt_utf8<wchar_t>));
     outputFile << output.str();
     outputFile.close();
+}
+
+void TestFunction(int fileGenNum) {
+    std::ofstream testFile("README.md", std::ios::app);
+
+    std::chrono::time_point<std::chrono::system_clock> createFileStart = std::chrono::system_clock::now();
+    string inputFileName = FileGen(fileGenNum);
+    std::chrono::time_point<std::chrono::system_clock> createFileEnd = std::chrono::system_clock::now();
+    
+    testFile << "Failo generavimas is " << fileGenNum << " irasu: " << std::chrono::duration<double>(createFileEnd - createFileStart).count() << " s\n";
+    testFile << "Programos veikimo laikas: \n";
+
+    wifstream inputFile(inputFileName);
+    vector<Student> grupe;
+
+
+	std::chrono::time_point<std::chrono::system_clock> programStart = std::chrono::system_clock::now();
+	Readfile(inputFile, grupe);
+	
+
 }

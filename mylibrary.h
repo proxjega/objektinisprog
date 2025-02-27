@@ -13,7 +13,6 @@
 #include <io.h>
 #include <locale>
 #include <codecvt>
-#include <chrono>
 
 using std::cout;
 using std::cin;
@@ -55,7 +54,7 @@ bool CompareBySurname(Student a, Student b);
 bool CompareByVid(Student a, Student b);
 bool CompareByMed(Student a, Student b);
 void Readfile(std::wifstream& inputFile, vector<Student>& grupe);
-void FileGen(int n);
+string FileGen(int n);
 bool InputSortType();
 void SortStudentsInGroups(vector<Student>& kietiakai, vector<Student>& vargsiukai, vector<Student> group, bool sortType);
 void PrintIntoFile(vector<Student> group, wstring fileName);

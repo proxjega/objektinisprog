@@ -37,4 +37,5 @@ struct Student {
     float vid = 0;
 };
 
-void PushStudent(vector<Student>& kietiakai, vector<Student>& vargsiukai, Student student, bool sortType);
+string FileGen(int n);
+void Readfile(std::wifstream& inputFile, vector<Student>& grupe);

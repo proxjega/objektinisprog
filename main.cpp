@@ -16,21 +16,11 @@ int main()
     int markNum;
     int randExMark;
     int randMark;
-    int fileGenNum = 100000;
     bool check = true;
     bool sortType = 1;
 	wstring inputFileName;
     wstring outputFileName;
 	wifstream inputFile;
-
-	std::ofstream testFile("README.md", std::ios::app);
-
-    std::chrono::time_point<std::chrono::system_clock> createFileStart = std::chrono::system_clock::now();
-    FileGen(fileGenNum);
-	std::chrono::time_point<std::chrono::system_clock> createFileEnd = std::chrono::system_clock::now();
-	testFile << "Failo generavimas is " << fileGenNum <<" irasu: " << std::chrono::duration<double>(createFileEnd - createFileStart).count() << " s\n";
-
-
 
     while (check == true) {
         Student student;
