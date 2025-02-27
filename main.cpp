@@ -22,7 +22,7 @@ int main()
     wstring outputFileName;
 	wifstream inputFile;
 
-	TestFunction(1000, grupe, vargsiukai, kietiakai);
+	TestFunction(1000, grupe, vargsiukai, kietiakai); //prideti rusiavima pagal kazka
 
     while (check == true) {
         Student student;
