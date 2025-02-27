@@ -7,7 +7,7 @@ int main()
     _setmode(_fileno(stderr), _O_U8TEXT);
     srand(time(NULL));
 
-    vector<Student> vargsiukai, kietiakai;
+    vector<Student> grupe, vargsiukai, kietiakai;
     wstring names[5] = { L"name1", L"name2", L"name3", L"name4", L"name5" };
     wstring surnames[5] = { L"surname1", L"surname2", L"surname3", L"surname4", L"surname5" };
     float galutinisVid = 0;
@@ -19,14 +19,15 @@ int main()
     int fileGenNum = 100000;
     bool check = true;
     bool sortType = 0;
-	wstring fileName;
+	wstring inputFileName;
+    wstring outputFileName = L"rezultatai.txt";
 	wifstream inputFile;
-    wofstream outputFileK(L"kietiakuRezultatai.txt");
-    outputFileK.imbue(std::locale(outputFileK.getloc(), new std::codecvt_utf8<wchar_t>));
-    outputFileK.close();
-    wofstream outputFileV(L"vargsiukuRezultatai.txt");
-    outputFileV.imbue(std::locale(outputFileV.getloc(), new std::codecvt_utf8<wchar_t>));
-    outputFileV.close();
+    //wofstream outputFileK(L"rezultatai.txt");
+    //outputFileK.imbue(std::locale(outputFileK.getloc(), new std::codecvt_utf8<wchar_t>));
+    //outputFileK.close();
+    //wofstream outputFileV(L"vargsiukuRezultatai.txt");
+    //outputFileV.imbue(std::locale(outputFileV.getloc(), new std::codecvt_utf8<wchar_t>));
+    //outputFileV.close();
 	std::ofstream testFile("README.md", std::ios::app);
 
     std::chrono::time_point<std::chrono::system_clock> createFileStart = std::chrono::system_clock::now();
@@ -103,7 +104,7 @@ int main()
             }
             student.vid = Mean(student);
             student.median = Median(student);
-			PushStudent(kietiakai, vargsiukai, student, sortType);
+            grupe.push_back(student);
             break;
         case('2'):
             system("cls");
@@ -136,7 +137,7 @@ int main()
             student.examMark = randExMark;
             student.vid = Mean(student);
             student.median = Median(student);
-            PushStudent(kietiakai, vargsiukai, student, sortType);
+            grupe.push_back(student);
             break;
         case('3'):
             system("cls");
@@ -169,19 +170,19 @@ int main()
             student.examMark = randExMark;
             student.vid = Mean(student);
             student.median = Median(student);
-            PushStudent(kietiakai, vargsiukai, student, sortType);
+            grupe.push_back(student);
             break;
         case('4'):
             system("cls");
             wcout << L"Iš kokio failo nuskaityti duomenis?\n\n";
 			system("dir /b *.txt");
-            wcin >> fileName;
+            wcin >> inputFileName;
             try {
-                inputFile.open(fileName);
+                inputFile.open(inputFileName);
 				if (!inputFile) {
 					throw L"\007Failas nerastas";
 				}
-                Readfile(inputFile, kietiakai, vargsiukai, sortType);
+                Readfile(inputFile, grupe);
 				wcout << L"\nDuomenys nuskaityti.\n";
             }
 			catch (const wchar_t* e) {
@@ -230,27 +231,6 @@ int main()
         }
         break;
     }
-
-    wstringstream output;
-    output << setw(17) << left << L"Pavardė" << setw(17) << left << L"Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
-    output << "-----------------------------------------------------------------------------------\n";
-    for (int i = 0; i < kietiakai.size(); i++) {
-        output << setw(17) << left << kietiakai[i].surname << setw(17) << left << kietiakai[i].name << setw(20) << left << setprecision(2) << fixed << kietiakai[i].vid << setw(15) << left << setprecision(2) << fixed << kietiakai[i].median << L"\n";
-    }
-    outputFileK.open("kietiakurezultatai.txt");
-	outputFileK << output.str();
-    outputFileK.close();
-    system("notepad \"kietiakurezultatai.txt\"");
-
-    wstringstream output1;
-    output1 << setw(17) << left << L"Pavardė" << setw(17) << left << L"Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
-    output1 << "-----------------------------------------------------------------------------------\n";
-    for (int i = 0; i < vargsiukai.size(); i++) {
-        output1 << setw(17) << left << vargsiukai[i].surname << setw(17) << left << vargsiukai[i].name << setw(20) << left << setprecision(2) << fixed << vargsiukai[i].vid << setw(15) << left << setprecision(2) << fixed << vargsiukai[i].median << L"\n";
-    }
-    outputFileV.open("vargsiukurezultatai.txt");
-    outputFileV << output1.str();
-    outputFileV.close();
-    system("notepad \"vargsiukurezultatai.txt\"");
+    PrintIntoFile(grupe, outputFileName);
 	return 0;
 }

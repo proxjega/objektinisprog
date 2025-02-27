@@ -9,6 +9,8 @@
 #include <numeric>
 #include <random>
 #include <chrono>
+#include <locale>
+#include <codecvt>
 
 using std::cin;
 using std::cout;
@@ -23,6 +25,8 @@ using std::wifstream;
 using std::string;
 using std::setw;
 using std::left;
+using std::setprecision;
+using std::fixed;
 
 struct Student {
     std::wstring name;

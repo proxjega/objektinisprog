@@ -84,7 +84,7 @@ bool CompareByMed(Student a, Student b) {
     return a.median < b.median;
 }
 
-void Readfile(std::wifstream& inputFile, vector<Student>& kietiakai, vector<Student>& vargsiukai, bool sortType) {
+void Readfile(std::wifstream& inputFile, vector<Student>& grupe) { //skaitymas is failo
     wstring temp;
     getline(inputFile, temp);
     wstringstream ss(temp);
@@ -110,11 +110,11 @@ void Readfile(std::wifstream& inputFile, vector<Student>& kietiakai, vector<Stud
         student.examMark = mark;
         student.vid = Mean(student);
         student.median = Median(student);
-        PushStudent(kietiakai, vargsiukai, student, sortType);
+        grupe.push_back(student);
     }
 }
 
-void PushStudent(vector<Student>& kietiakai, vector<Student>& vargsiukai, Student student, bool sortType) {
+void PushStudent(vector<Student>& kietiakai, vector<Student>& vargsiukai, Student student, bool sortType) { //sorting function
     if (sortType == 1) {
         if (student.vid < 5.0) {
             vargsiukai.push_back(student);
@@ -150,4 +150,19 @@ void FileGen(int n) {
             << setw(10) << left << dist(mt) << dist(mt);
     }
 	file.close();
+}
+
+void PrintIntoFile(vector<Student> group, wstring fileName) {
+    wstringstream output;
+    output << setw(17) << left << L"Pavardė" << setw(17) << left << L"Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
+    output << "-----------------------------------------------------------------------------------\n";
+    for (int i = 0; i < group.size(); i++) {
+        output << setw(17) << left << group[i].surname << setw(17) << left 
+            << group[i].name << setw(20) << left << setprecision(2) << fixed
+            << group[i].vid << setw(15) << left << setprecision(2) << fixed << group[i].median << L"\n";
+    }
+    std::wofstream outputFile(fileName);
+    outputFile.imbue(std::locale(outputFile.getloc(), new std::codecvt_utf8<wchar_t>));
+    outputFile << output.str();
+    outputFile.close();
 }
