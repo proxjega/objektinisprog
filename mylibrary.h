@@ -58,3 +58,4 @@ string FileGen(int n);
 bool InputSortType();
 void SortStudentsInGroups(vector<Student>& kietiakai, vector<Student>& vargsiukai, vector<Student> group, bool sortType);
 void PrintIntoFile(vector<Student> group, wstring fileName);
+void TestFunction(int fileGenNum, vector<Student>& grupe, vector<Student>& vargsiukai, vector<Student>& kietiakai);

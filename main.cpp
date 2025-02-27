@@ -22,6 +22,8 @@ int main()
     wstring outputFileName;
 	wifstream inputFile;
 
+	TestFunction(1000, grupe, vargsiukai, kietiakai);
+
     while (check == true) {
         Student student;
         wcout << "---------------------------------\nMENU\n";
