@@ -114,30 +114,32 @@ void Readfile(std::wifstream& inputFile, vector<Student>& grupe) { //skaitymas i
     }
 }
 
-void PushStudent(vector<Student>& kietiakai, vector<Student>& vargsiukai, Student student, bool sortType) { //sorting function
-    if (sortType == 1) {
-        if (student.vid < 5.0) {
-            vargsiukai.push_back(student);
+void SortStudentsInGroups(vector<Student>& kietiakai, vector<Student>& vargsiukai, vector<Student> group, bool sortType) { //sorting function
+    for (int i = 0; i < group.size(); i++) {
+        if (sortType == 1) {
+            if (group[i].vid < 5.0) {
+                vargsiukai.push_back(group[i]);
+            }
+            else {
+                kietiakai.push_back(group[i]);
+            }
         }
         else {
-            kietiakai.push_back(student);
+            if (group[i].median < 5.0) {
+                vargsiukai.push_back(group[i]);
+            }
+            else {
+                kietiakai.push_back(group[i]);
+            }
         }
     }
-    else {
-        if (student.median < 5.0) {
-            vargsiukai.push_back(student);
-        }
-        else {
-            kietiakai.push_back(student);
-        }
-    }
+    
 }
 
 void FileGen(int n) {
     string name;
     name = "studentai" + std::to_string(n) + ".txt";
 	std::ofstream file(name);
-
     std::random_device rd;
 	std::mt19937 mt(rd());
 	std::uniform_int_distribution<int> dist(1, 10);

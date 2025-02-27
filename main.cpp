@@ -18,16 +18,11 @@ int main()
     int randMark;
     int fileGenNum = 100000;
     bool check = true;
-    bool sortType = 0;
+    bool sortType = 1;
 	wstring inputFileName;
-    wstring outputFileName = L"rezultatai.txt";
+    wstring outputFileName;
 	wifstream inputFile;
-    //wofstream outputFileK(L"rezultatai.txt");
-    //outputFileK.imbue(std::locale(outputFileK.getloc(), new std::codecvt_utf8<wchar_t>));
-    //outputFileK.close();
-    //wofstream outputFileV(L"vargsiukuRezultatai.txt");
-    //outputFileV.imbue(std::locale(outputFileV.getloc(), new std::codecvt_utf8<wchar_t>));
-    //outputFileV.close();
+
 	std::ofstream testFile("README.md", std::ios::app);
 
     std::chrono::time_point<std::chrono::system_clock> createFileStart = std::chrono::system_clock::now();
@@ -35,22 +30,7 @@ int main()
 	std::chrono::time_point<std::chrono::system_clock> createFileEnd = std::chrono::system_clock::now();
 	testFile << "Failo generavimas is " << fileGenNum <<" irasu: " << std::chrono::duration<double>(createFileEnd - createFileStart).count() << " s\n";
 
-    wcout << L"Pagal ką rušiuoti studentus į grupes? 1 - vidurkis, 0 - mediana\n";
-    while (true) {
-        try {
-            sortType = InputSortType();
-			break;
-        }
-        catch (const wchar_t* e) {
-            wcerr << e << endl;
-            continue;
-        }
-        catch (...) {
-            wcerr << L"\007Nežinoma klaida" << endl;
-			continue;
-        }
-    }
-	system("cls");
+
 
     while (check == true) {
         Student student;
@@ -204,7 +184,27 @@ int main()
             continue;
         }
     }
-	wcout << L"Pagal ką rušiuoti studentus? (1 - pagal vardą, 2 - pagal pavardę, 3 - pagal galutinį balą (vid.), 4 - pagal galutinį balą (med.))\n";
+
+    wcout << L"Pagal ką rušiuoti studentus į grupes? 1 - vidurkis, 0 - mediana\n";
+    while (true) {
+        try {
+            sortType = InputSortType();
+            break;
+        }
+        catch (const wchar_t* e) {
+            wcerr << e << endl;
+            continue;
+        }
+        catch (...) {
+            wcerr << L"\007Nežinoma klaida" << endl;
+            continue;
+        }
+    }
+    system("cls");
+    
+    SortStudentsInGroups(kietiakai, vargsiukai, grupe, sortType);
+
+    wcout << L"Pagal ką rušiuoti studentus? (1 - pagal vardą, 2 - pagal pavardę, 3 - pagal galutinį balą (vid.), 4 - pagal galutinį balą (med.))\n";
     while (true) {
         cin >> menu;
         switch (menu)
@@ -231,6 +231,11 @@ int main()
         }
         break;
     }
-    PrintIntoFile(grupe, outputFileName);
+    outputFileName = L"vargsiukuRezultatai.txt";
+    PrintIntoFile(vargsiukai, outputFileName);
+    outputFileName = L"kietiakuRezultatai.txt";
+    PrintIntoFile(kietiakai, outputFileName);
+	system("notepad.exe vargsiukuRezultatai.txt");
+	system("notepad.exe kietiakuRezultatai.txt");
 	return 0;
 }
