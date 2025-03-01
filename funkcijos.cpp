@@ -173,7 +173,7 @@ void PrintIntoFile(vector<Student> group, wstring fileName) {
 void TestFunction(int fileGenNum, vector<Student>& grupe, vector<Student>& vargsiukai, vector<Student>& kietiakai) {
     wcout << L"Testo pradzia\n";
 
-    std::ofstream testFile("README.md", std::ios::app);
+    std::ofstream testFile("tyrimas.txt", std::ios::app);
 
     std::chrono::time_point<std::chrono::system_clock> createFileStart = std::chrono::system_clock::now();
     string inputFileName = FileGen(fileGenNum);
@@ -189,6 +189,10 @@ void TestFunction(int fileGenNum, vector<Student>& grupe, vector<Student>& vargs
 
     std::chrono::time_point<std::chrono::system_clock> startSorting = std::chrono::system_clock::now();
     SortStudentsInGroups(kietiakai, vargsiukai, grupe, 1);
+	grupe.clear();
+	grupe.shrink_to_fit();
+    sort(kietiakai.begin(), kietiakai.end(), CompareByVid);
+    sort(vargsiukai.begin(), vargsiukai.end(), CompareByVid);
     std::chrono::time_point<std::chrono::system_clock> endSorting = std::chrono::system_clock::now();
 
     std::chrono::time_point<std::chrono::system_clock> startOutput = std::chrono::system_clock::now();
@@ -204,6 +208,6 @@ void TestFunction(int fileGenNum, vector<Student>& grupe, vector<Student>& vargs
     testFile << "Surusiuotu studentu isvedimas is " << fileGenNum << " irasu: " << std::chrono::duration<double>(endOutput - startOutput).count() << " s\n";
     testFile << "Visos programos veikimo laikas is " << fileGenNum << " irasu: " << std::chrono::duration<double>(programEnd - programStart).count() << " s\n\n";
 	
-    wcout << L"Testas baigtas. Patikrinkite readme.md\n";
-    std::terminate();
+    wcout << L"Testas baigtas. Patikrinkite tyrimas.txt\n";
+	exit(0);
 }

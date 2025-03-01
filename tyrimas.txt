@@ -1,0 +1,176 @@
+Failo generavimas is 1000 irasu: 0.0069992 s
+Programos veikimas: 
+Duomenu nuskaitymas is 1000 irasu: 0.0205788 s
+Studentu rusiavimas i 2 grupes is 1000 irasu: 0.0022577 s
+Surusiuotu studentu isvedimas is 1000 irasu: 0.0056557 s
+Visos programos veikimo laikas is 1000 irasu: 0.0284922 s
+
+Failo generavimas is 1000 irasu: 0.007447 s
+Programos veikimas: 
+Duomenu nuskaitymas is 1000 irasu: 0.0186958 s
+Studentu rusiavimas i 2 grupes is 1000 irasu: 0.002519 s
+Surusiuotu studentu isvedimas is 1000 irasu: 0.0054497 s
+Visos programos veikimo laikas is 1000 irasu: 0.0266648 s
+
+Failo generavimas is 1000 irasu: 0.0074354 s
+Programos veikimas: 
+Duomenu nuskaitymas is 1000 irasu: 0.0200418 s
+Studentu rusiavimas i 2 grupes is 1000 irasu: 0.0022202 s
+Surusiuotu studentu isvedimas is 1000 irasu: 0.0054852 s
+Visos programos veikimo laikas is 1000 irasu: 0.0277473 s
+
+Failo generavimas is 1000 irasu: 0.0071428 s
+Programos veikimas: 
+Duomenu nuskaitymas is 1000 irasu: 0.020238 s
+Studentu rusiavimas i 2 grupes is 1000 irasu: 0.0021697 s
+Surusiuotu studentu isvedimas is 1000 irasu: 0.0055034 s
+Visos programos veikimo laikas is 1000 irasu: 0.0279113 s
+
+Failo generavimas is 1000 irasu: 0.0070497 s
+Programos veikimas: 
+Duomenu nuskaitymas is 1000 irasu: 0.0203833 s
+Studentu rusiavimas i 2 grupes is 1000 irasu: 0.0022491 s
+Surusiuotu studentu isvedimas is 1000 irasu: 0.0054221 s
+Visos programos veikimo laikas is 1000 irasu: 0.0280545 s
+------------------------------------------------------------
+Failo generavimas is 10000 irasu: 0.0545851 s
+Programos veikimas: 
+Duomenu nuskaitymas is 10000 irasu: 0.0900843 s
+Studentu rusiavimas i 2 grupes is 10000 irasu: 0.0232089 s
+Surusiuotu studentu isvedimas is 10000 irasu: 0.0461882 s
+Visos programos veikimo laikas is 10000 irasu: 0.159482 s
+
+Failo generavimas is 10000 irasu: 0.0535969 s
+Programos veikimas: 
+Duomenu nuskaitymas is 10000 irasu: 0.0887108 s
+Studentu rusiavimas i 2 grupes is 10000 irasu: 0.0236702 s
+Surusiuotu studentu isvedimas is 10000 irasu: 0.045474 s
+Visos programos veikimo laikas is 10000 irasu: 0.157855 s
+
+Failo generavimas is 10000 irasu: 0.054776 s
+Programos veikimas: 
+Duomenu nuskaitymas is 10000 irasu: 0.0875808 s
+Studentu rusiavimas i 2 grupes is 10000 irasu: 0.0222291 s
+Surusiuotu studentu isvedimas is 10000 irasu: 0.0451063 s
+Visos programos veikimo laikas is 10000 irasu: 0.154916 s
+
+Failo generavimas is 10000 irasu: 0.0540726 s
+Programos veikimas: 
+Duomenu nuskaitymas is 10000 irasu: 0.0878233 s
+Studentu rusiavimas i 2 grupes is 10000 irasu: 0.0228582 s
+Surusiuotu studentu isvedimas is 10000 irasu: 0.045892 s
+Visos programos veikimo laikas is 10000 irasu: 0.156574 s
+
+Failo generavimas is 10000 irasu: 0.0532723 s
+Programos veikimas: 
+Duomenu nuskaitymas is 10000 irasu: 0.0905517 s
+Studentu rusiavimas i 2 grupes is 10000 irasu: 0.0255714 s
+Surusiuotu studentu isvedimas is 10000 irasu: 0.0449869 s
+Visos programos veikimo laikas is 10000 irasu: 0.16111 s
+------------------------------------------------------------
+Failo generavimas is 100000 irasu: 0.511894 s
+Programos veikimas: 
+Duomenu nuskaitymas is 100000 irasu: 0.812178 s
+Studentu rusiavimas i 2 grupes is 100000 irasu: 0.280148 s
+Surusiuotu studentu isvedimas is 100000 irasu: 0.451918 s
+Visos programos veikimo laikas is 100000 irasu: 1.54424 s
+
+Failo generavimas is 100000 irasu: 0.513556 s
+Programos veikimas: 
+Duomenu nuskaitymas is 100000 irasu: 0.802276 s
+Studentu rusiavimas i 2 grupes is 100000 irasu: 0.2709 s
+Surusiuotu studentu isvedimas is 100000 irasu: 0.452296 s
+Visos programos veikimo laikas is 100000 irasu: 1.52547 s
+
+Failo generavimas is 100000 irasu: 0.512168 s
+Programos veikimas: 
+Duomenu nuskaitymas is 100000 irasu: 0.805882 s
+Studentu rusiavimas i 2 grupes is 100000 irasu: 0.285787 s
+Surusiuotu studentu isvedimas is 100000 irasu: 0.447213 s
+Visos programos veikimo laikas is 100000 irasu: 1.53888 s
+
+Failo generavimas is 100000 irasu: 0.517333 s
+Programos veikimas: 
+Duomenu nuskaitymas is 100000 irasu: 0.819071 s
+Studentu rusiavimas i 2 grupes is 100000 irasu: 0.27 s
+Surusiuotu studentu isvedimas is 100000 irasu: 0.439236 s
+Visos programos veikimo laikas is 100000 irasu: 1.52831 s
+
+Failo generavimas is 100000 irasu: 0.513754 s
+Programos veikimas: 
+Duomenu nuskaitymas is 100000 irasu: 0.804316 s
+Studentu rusiavimas i 2 grupes is 100000 irasu: 0.273044 s
+Surusiuotu studentu isvedimas is 100000 irasu: 0.439214 s
+Visos programos veikimo laikas is 100000 irasu: 1.51657 s
+------------------------------------------------------------
+Failo generavimas is 1000000 irasu: 5.1359 s
+Programos veikimas: 
+Duomenu nuskaitymas is 1000000 irasu: 7.95232 s
+Studentu rusiavimas i 2 grupes is 1000000 irasu: 3.08832 s
+Surusiuotu studentu isvedimas is 1000000 irasu: 4.53882 s
+Visos programos veikimo laikas is 1000000 irasu: 15.5795 s
+
+Failo generavimas is 1000000 irasu: 5.12721 s
+Programos veikimas: 
+Duomenu nuskaitymas is 1000000 irasu: 7.85192 s
+Studentu rusiavimas i 2 grupes is 1000000 irasu: 3.09598 s
+Surusiuotu studentu isvedimas is 1000000 irasu: 4.51794 s
+Visos programos veikimo laikas is 1000000 irasu: 15.4658 s
+
+Failo generavimas is 1000000 irasu: 5.11086 s
+Programos veikimas: 
+Duomenu nuskaitymas is 1000000 irasu: 7.92768 s
+Studentu rusiavimas i 2 grupes is 1000000 irasu: 2.98451 s
+Surusiuotu studentu isvedimas is 1000000 irasu: 4.47385 s
+Visos programos veikimo laikas is 1000000 irasu: 15.386 s
+
+Failo generavimas is 1000000 irasu: 5.35553 s
+Programos veikimas: 
+Duomenu nuskaitymas is 1000000 irasu: 8.14139 s
+Studentu rusiavimas i 2 grupes is 1000000 irasu: 3.04206 s
+Surusiuotu studentu isvedimas is 1000000 irasu: 4.54852 s
+Visos programos veikimo laikas is 1000000 irasu: 15.732 s
+
+Failo generavimas is 1000000 irasu: 5.17767 s
+Programos veikimas: 
+Duomenu nuskaitymas is 1000000 irasu: 7.91888 s
+Studentu rusiavimas i 2 grupes is 1000000 irasu: 3.02432 s
+Surusiuotu studentu isvedimas is 1000000 irasu: 4.53979 s
+Visos programos veikimo laikas is 1000000 irasu: 15.483 s
+------------------------------------------------------------
+Failo generavimas is 10000000 irasu: 50.5598 s
+Programos veikimas: 
+Duomenu nuskaitymas is 10000000 irasu: 79.6497 s
+Studentu rusiavimas i 2 grupes is 10000000 irasu: 30.5297 s
+Surusiuotu studentu isvedimas is 10000000 irasu: 46.0554 s
+Visos programos veikimo laikas is 10000000 irasu: 156.235 s
+
+Failo generavimas is 10000000 irasu: 51.1023 s
+Programos veikimas: 
+Duomenu nuskaitymas is 10000000 irasu: 78.9946 s
+Studentu rusiavimas i 2 grupes is 10000000 irasu: 32.8843 s
+Surusiuotu studentu isvedimas is 10000000 irasu: 44.3121 s
+Visos programos veikimo laikas is 10000000 irasu: 156.191 s
+
+
+Failo generavimas is 10000000 irasu: 52.1433 s
+Programos veikimas: 
+Duomenu nuskaitymas is 10000000 irasu: 76.6584 s
+Studentu rusiavimas i 2 grupes is 10000000 irasu: 31.8456 s
+Surusiuotu studentu isvedimas is 10000000 irasu: 44.8796 s
+Visos programos veikimo laikas is 10000000 irasu: 155.9876 s
+
+Failo generavimas is 10000000 irasu: 50.6548 s
+Programos veikimas: 
+Duomenu nuskaitymas is 10000000 irasu: 79.2256 s
+Studentu rusiavimas i 2 grupes is 10000000 irasu: 32.3356 s
+Surusiuotu studentu isvedimas is 10000000 irasu: 45.0014 s
+Visos programos veikimo laikas is 10000000 irasu: 156.9987 s
+
+Failo generavimas is 10000000 irasu: 51.0813 s
+Programos veikimas: 
+Duomenu nuskaitymas is 10000000 irasu: 79.0695 s
+Studentu rusiavimas i 2 grupes is 10000000 irasu: 33.3569 s
+Surusiuotu studentu isvedimas is 10000000 irasu: 44.5402 s
+Visos programos veikimo laikas is 10000000 irasu: 156.967 s
+

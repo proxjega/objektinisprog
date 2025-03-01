@@ -22,7 +22,7 @@ int main()
     wstring outputFileName;
 	wifstream inputFile;
 
-	TestFunction(1000, grupe, vargsiukai, kietiakai); //prideti rusiavima pagal kazka
+	TestFunction(10000000, grupe, vargsiukai, kietiakai); //prideti rusiavima pagal kazka
 
     while (check == true) {
         Student student;
@@ -195,7 +195,8 @@ int main()
     system("cls");
     
     SortStudentsInGroups(kietiakai, vargsiukai, grupe, sortType);
-
+    grupe.clear();
+    grupe.shrink_to_fit();
     wcout << L"Pagal ką rušiuoti studentus? (1 - pagal vardą, 2 - pagal pavardę, 3 - pagal galutinį balą (vid.), 4 - pagal galutinį balą (med.))\n";
     while (true) {
         cin >> menu;
