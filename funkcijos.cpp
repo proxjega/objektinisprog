@@ -56,6 +56,20 @@ bool InputSortType() {
     }
 }
 
+int InputTestNum() {
+    int value;
+    while (true) {
+        if (cin >> value && value <= 10000000 && value > 0) {
+            return value;
+        }
+        else {
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            throw L"\007Įveskite tinkamą įrašų skaičių";
+        }
+    }
+}
+
 float Mean(Student st) {
     return (std::accumulate(st.marks.begin(), st.marks.end(), 0) * 1.0) / (st.marks.size() * 1.0);
 }
@@ -133,10 +147,11 @@ void SortStudentsInGroups(vector<Student>& kietiakai, vector<Student>& vargsiuka
             }
         }
     }
-    
+    kietiakai.shrink_to_fit();
+	vargsiukai.shrink_to_fit();
 }
 
-string FileGen(int n) {
+void FileGen(int n) {
     string name;
     name = "studentai" + std::to_string(n) + ".txt";
 	std::ofstream file(name);
@@ -152,7 +167,6 @@ string FileGen(int n) {
             << setw(10) << left << dist(mt) << dist(mt);
     }
 	file.close();
-    return name;
 }
 
 void PrintIntoFile(vector<Student> group, wstring fileName) {
@@ -170,20 +184,35 @@ void PrintIntoFile(vector<Student> group, wstring fileName) {
     outputFile.close();
 }
 
-void TestFunction(int fileGenNum, vector<Student>& grupe, vector<Student>& vargsiukai, vector<Student>& kietiakai) {
-    wcout << L"Testo pradzia\n";
+void TestFunction(vector<Student>& grupe, vector<Student>& vargsiukai, vector<Student>& kietiakai) {
+    wcout << L"Iš kiek įrašų testuoti programą?";
+    int testNum;
+    while (true) {
+        try {
+            testNum = InputTestNum();
+			break;
+        }
+        catch (const wchar_t* e) {
+            std::wcerr << e << endl;
+            continue;
+        }
+        catch (...) {
+            std::wcerr << L"\007Nežinoma klaida" << endl;
+            continue;
+        }
+    }
 
+    string inputFileName = "studentai" + std::to_string(testNum) + ".txt";
+    wifstream inputFile(inputFileName);
+	if (!inputFile) {
+		std::wcerr << L"Failas nerastas\n";
+        TestFunction(grupe, vargsiukai, kietiakai);
+	}
     std::ofstream testFile("tyrimas.txt", std::ios::app);
-
-    std::chrono::time_point<std::chrono::system_clock> createFileStart = std::chrono::system_clock::now();
-    string inputFileName = FileGen(fileGenNum);
-    std::chrono::time_point<std::chrono::system_clock> createFileEnd = std::chrono::system_clock::now();
-    
-    testFile << "Failo generavimas is " << fileGenNum << " irasu: " << std::chrono::duration<double>(createFileEnd - createFileStart).count() << " s\n";
+    wcout << L"Testo pradzia\n";
     testFile << "Programos veikimas: \n";
 
 	std::chrono::time_point<std::chrono::system_clock> programStart = std::chrono::system_clock::now();
-    wifstream inputFile(inputFileName);
 	Readfile(inputFile, grupe);
     std::chrono::time_point<std::chrono::system_clock> endReading = std::chrono::system_clock::now();
 
@@ -203,11 +232,10 @@ void TestFunction(int fileGenNum, vector<Student>& grupe, vector<Student>& vargs
     std::chrono::time_point<std::chrono::system_clock> endOutput = std::chrono::system_clock::now();
 	std::chrono::time_point<std::chrono::system_clock> programEnd = std::chrono::system_clock::now();
 
-    testFile << "Duomenu nuskaitymas is " << fileGenNum << " irasu: " << std::chrono::duration<double>(endReading - programStart).count() << " s\n";
-    testFile << "Studentu rusiavimas i 2 grupes is " << fileGenNum << " irasu: " << std::chrono::duration<double>(endSorting - startSorting).count() << " s\n";
-    testFile << "Surusiuotu studentu isvedimas is " << fileGenNum << " irasu: " << std::chrono::duration<double>(endOutput - startOutput).count() << " s\n";
-    testFile << "Visos programos veikimo laikas is " << fileGenNum << " irasu: " << std::chrono::duration<double>(programEnd - programStart).count() << " s\n\n";
+    testFile << "Duomenu nuskaitymas is " << testNum << " irasu: " << std::chrono::duration<double>(endReading - programStart).count() << " s\n";
+    testFile << "Studentu rusiavimas i 2 grupes is " << testNum << " irasu: " << std::chrono::duration<double>(endSorting - startSorting).count() << " s\n";
+    testFile << "Surusiuotu studentu isvedimas is " << testNum << " irasu: " << std::chrono::duration<double>(endOutput - startOutput).count() << " s\n";
+    testFile << "Visos programos veikimo laikas is " << testNum << " irasu: " << std::chrono::duration<double>(programEnd - programStart).count() << " s\n\n";
 	
     wcout << L"Testas baigtas. Patikrinkite tyrimas.txt\n";
-	exit(0);
 }

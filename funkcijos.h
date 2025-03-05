@@ -37,6 +37,5 @@ struct Student {
     float vid = 0;
 };
 
-string FileGen(int n);
 void Readfile(std::wifstream& inputFile, vector<Student>& grupe);
 bool CompareByVid(Student a, Student b);

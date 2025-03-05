@@ -21,13 +21,13 @@ int main()
 	wstring inputFileName;
     wstring outputFileName;
 	wifstream inputFile;
+    
 
-	TestFunction(10000000, grupe, vargsiukai, kietiakai); //prideti rusiavima pagal kazka
 
     while (check == true) {
         Student student;
         wcout << "---------------------------------\nMENU\n";
-        wcout << L"1 - ranka įvesti duomenis\n2 - generuoti pažymius\n3 - generuoti ir pažymius ir studentų vardus, pavardės\n4 - įvesti duomenis iš failo\n5 - baigti darbą\n---------------------------------\n";
+        wcout << L"1 - ranka įvesti duomenis\n2 - generuoti pažymius\n3 - generuoti ir pažymius ir studentų vardus, pavardės\n4 - įvesti duomenis iš failo\n5 - testavimas\n6 - baigti darbą\n---------------------------------\n";
         cin >> menu;
         switch (menu)
         {
@@ -167,6 +167,9 @@ int main()
 			}
             break;
         case('5'):
+            TestFunction(grupe, vargsiukai, kietiakai);
+            break;
+        case('6'):
             system("cls");
             check = false;
             break;
