@@ -206,7 +206,7 @@ void TestFunction(vector<Student>& grupe, vector<Student>& vargsiukai, vector<St
     wifstream inputFile(inputFileName);
 	if (!inputFile) {
 		std::wcerr << L"Failas nerastas\n";
-        TestFunction(grupe, vargsiukai, kietiakai);
+        return;
 	}
     std::ofstream testFile("tyrimas.txt", std::ios::app);
     wcout << L"Testo pradzia\n";
@@ -214,6 +214,7 @@ void TestFunction(vector<Student>& grupe, vector<Student>& vargsiukai, vector<St
 
 	std::chrono::time_point<std::chrono::system_clock> programStart = std::chrono::system_clock::now();
 	Readfile(inputFile, grupe);
+	grupe.shrink_to_fit();
     std::chrono::time_point<std::chrono::system_clock> endReading = std::chrono::system_clock::now();
 
     std::chrono::time_point<std::chrono::system_clock> startSorting = std::chrono::system_clock::now();

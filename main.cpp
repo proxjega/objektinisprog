@@ -179,7 +179,7 @@ int main()
             continue;
         }
     }
-
+    grupe.shrink_to_fit();
     wcout << L"Pagal ką rušiuoti studentus į grupes? 1 - vidurkis, 0 - mediana\n";
     while (true) {
         try {
