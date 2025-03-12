@@ -170,8 +170,8 @@ void FileGen(int n) {
     }
 	file.close();
 }
-template<class T>
-void PrintIntoFile(T group, wstring fileName) {
+
+void PrintIntoFile(vector<Student> group, wstring fileName) {
     wstringstream output;
     output << setw(17) << left << L"Pavardė" << setw(17) << left << L"Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
     output << "-----------------------------------------------------------------------------------\n";
@@ -185,8 +185,8 @@ void PrintIntoFile(T group, wstring fileName) {
     outputFile << output.str();
     outputFile.close();
 }
-template <class arr1, class arr2, class arr3>
-void TestFunction(arr1& grupe, arr2& vargsiukai, arr3& kietiakai) {
+
+void TestFunction(vector<Student>& grupe, vector<Student>& vargsiukai, vector<Student>& kietiakai) {
     wcout << L"Iš kiek įrašų testuoti programą?";
     int testNum;
     while (true) {
