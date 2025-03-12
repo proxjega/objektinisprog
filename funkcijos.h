@@ -40,3 +40,4 @@ struct Student {
 template <class T>
 void Readfile(std::wifstream& inputFile, T& grupe);
 bool CompareByVid(Student a, Student b);
+int InputTestNum();
