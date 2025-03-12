@@ -98,7 +98,8 @@ bool CompareByMed(Student a, Student b) {
     return a.median < b.median;
 }
 
-void Readfile(std::wifstream& inputFile, vector<Student>& grupe) { //skaitymas is failo
+template <class T>
+void Readfile(std::wifstream& inputFile, T& grupe) { //skaitymas is failo
     wstring temp;
     getline(inputFile, temp);
     wstringstream ss(temp);
@@ -128,7 +129,8 @@ void Readfile(std::wifstream& inputFile, vector<Student>& grupe) { //skaitymas i
     }
 }
 
-void SortStudentsInGroups(vector<Student>& kietiakai, vector<Student>& vargsiukai, vector<Student> group, bool sortType) { //sorting function
+template <class arr1, class arr2, class arr3>
+void SortStudentsInGroups(arr1& kietiakai, arr2& vargsiukai, arr3 group, bool sortType) { //sorting function
     for (int i = 0; i < group.size(); i++) {
         if (sortType == 1) {
             if (group[i].vid < 5.0) {
