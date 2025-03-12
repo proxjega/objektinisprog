@@ -53,13 +53,17 @@ bool CompareByName(Student a, Student b);
 bool CompareBySurname(Student a, Student b);
 bool CompareByVid(Student a, Student b);
 bool CompareByMed(Student a, Student b);
-template <class T>
-void Readfile(std::wifstream& inputFile, T& grupe);
 void FileGen(int n);
 bool InputSortType();
-template <class arr1, class arr2, class arr3>
+
+template<class T>
+void Readfile(std::wifstream& inputFile, T& grupe);
+
+template<class arr1, class arr2, class arr3>
 void SortStudentsInGroups(arr1& kietiakai, arr2& vargsiukai, arr3 group, bool sortType);
+
 template<class T>
 void PrintIntoFile(T group, wstring fileName);
-template <class arr1, class arr2, class arr3>
+
+template<class arr1, class arr2, class arr3>
 void TestFunction(arr1& grupe, arr2& vargsiukai, arr3& kietiakai);
