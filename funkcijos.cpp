@@ -185,7 +185,6 @@ void PrintIntoFile(T group, wstring fileName) {
     outputFile << output.str();
     outputFile.close();
 }
-
 template <class arr1, class arr2, class arr3>
 void TestFunction(arr1& grupe, arr2& vargsiukai, arr3& kietiakai) {
     wcout << L"Iš kiek įrašų testuoti programą?";
