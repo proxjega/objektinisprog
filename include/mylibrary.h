@@ -13,7 +13,11 @@
 #include <io.h>
 #include <locale>
 #include <codecvt>
+#include <deque>
+#include <list>
 
+using std::deque;
+using std::list;
 using std::cout;
 using std::cin;
 using std::endl;

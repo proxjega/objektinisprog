@@ -90,42 +90,56 @@ void TestFunction(arr1& grupe, arr2& vargsiukai, arr3& kietiakai) {
             continue;
         }
     }
-
-    string inputFileName = "studentai" + std::to_string(testNum) + ".txt";
-    wifstream inputFile(inputFileName);
-    if (!inputFile) {
-        std::wcerr << L"Failas nerastas\n";
-        return;
-    }
-    std::ofstream testFile("tyrimas.txt", std::ios::app);
     wcout << L"Testo pradzia\n";
-    testFile << "Programos veikimas: \n";
+    for (int i = 0; i < 5; i++) {
+        string inputFileName = "studentai" + std::to_string(testNum) + ".txt";
+        wifstream inputFile(inputFileName);
+        if (!inputFile) {
+            std::wcerr << L"Failas nerastas\n";
+            return;
+        }
+    
+        std::ofstream testFile;
+        if (std::is_same<typename std::decay<decltype(grupe)>::type, std::vector<Student>>::value)
+            testFile.open("tyrimasVector.txt", std::ios::app);
+        else if (std::is_same<typename std::decay<decltype(grupe)>::type, std::deque<Student>>::value)
+            testFile.open("tyrimasDeque.txt", std::ios::app);
+        else if (std::is_same<typename std::decay<decltype(grupe)>::type, std::list<Student>>::value)
+            testFile.open("tyrimasList.txt", std::ios::app);
+        else
+            testFile.open("tyrimas.txt", std::ios::app); // Default fallback
 
-    std::chrono::time_point<std::chrono::system_clock> programStart = std::chrono::system_clock::now();
-    Readfile(inputFile, grupe);
-    grupe.shrink_to_fit();
-    std::chrono::time_point<std::chrono::system_clock> endReading = std::chrono::system_clock::now();
+    
+        testFile << "Programos veikimas: \n";
 
-    std::chrono::time_point<std::chrono::system_clock> startSorting = std::chrono::system_clock::now();
-    SortStudentsInGroups(kietiakai, vargsiukai, grupe, 1);
-    grupe.clear();
-    grupe.shrink_to_fit();
-    sort(kietiakai.begin(), kietiakai.end(), CompareByVid);
-    sort(vargsiukai.begin(), vargsiukai.end(), CompareByVid);
-    std::chrono::time_point<std::chrono::system_clock> endSorting = std::chrono::system_clock::now();
+        std::chrono::time_point<std::chrono::system_clock> programStart = std::chrono::system_clock::now();
+        Readfile(inputFile, grupe);
+        grupe.shrink_to_fit();
+        std::chrono::time_point<std::chrono::system_clock> endReading = std::chrono::system_clock::now();
 
-    std::chrono::time_point<std::chrono::system_clock> startOutput = std::chrono::system_clock::now();
-    wstring outputFileName = L"vargsiukuRezultatai.txt";
-    PrintIntoFile(vargsiukai, outputFileName);
-    outputFileName = L"kietiakuRezultatai.txt";
-    PrintIntoFile(kietiakai, outputFileName);
-    std::chrono::time_point<std::chrono::system_clock> endOutput = std::chrono::system_clock::now();
-    std::chrono::time_point<std::chrono::system_clock> programEnd = std::chrono::system_clock::now();
+        std::chrono::time_point<std::chrono::system_clock> startSorting = std::chrono::system_clock::now();
+        SortStudentsInGroups(kietiakai, vargsiukai, grupe, 1);
+        grupe.clear();
+        grupe.shrink_to_fit();
+        sort(kietiakai.begin(), kietiakai.end(), CompareByVid);
+        sort(vargsiukai.begin(), vargsiukai.end(), CompareByVid);
+        std::chrono::time_point<std::chrono::system_clock> endSorting = std::chrono::system_clock::now();
 
-    testFile << "Duomenu nuskaitymas is " << testNum << " irasu: " << std::chrono::duration<double>(endReading - programStart).count() << " s\n";
-    testFile << "Studentu rusiavimas i 2 grupes is " << testNum << " irasu: " << std::chrono::duration<double>(endSorting - startSorting).count() << " s\n";
-    testFile << "Surusiuotu studentu isvedimas is " << testNum << " irasu: " << std::chrono::duration<double>(endOutput - startOutput).count() << " s\n";
-    testFile << "Visos programos veikimo laikas is " << testNum << " irasu: " << std::chrono::duration<double>(programEnd - programStart).count() << " s\n\n";
+        std::chrono::time_point<std::chrono::system_clock> startOutput = std::chrono::system_clock::now();
+        wstring outputFileName = L"vargsiukuRezultatai.txt";
+        PrintIntoFile(vargsiukai, outputFileName);
+        outputFileName = L"kietiakuRezultatai.txt";
+        PrintIntoFile(kietiakai, outputFileName);
+        std::chrono::time_point<std::chrono::system_clock> endOutput = std::chrono::system_clock::now();
+        std::chrono::time_point<std::chrono::system_clock> programEnd = std::chrono::system_clock::now();
 
+        testFile << "Duomenu nuskaitymas is " << testNum << " irasu: " << std::chrono::duration<double>(endReading - programStart).count() << " s\n";
+        testFile << "Studentu rusiavimas i 2 grupes is " << testNum << " irasu: " << std::chrono::duration<double>(endSorting - startSorting).count() << " s\n";
+        testFile << "Surusiuotu studentu isvedimas is " << testNum << " irasu: " << std::chrono::duration<double>(endOutput - startOutput).count() << " s\n";
+        testFile << "Visos programos veikimo laikas is " << testNum << " irasu: " << std::chrono::duration<double>(programEnd - programStart).count() << " s\n\n";
+		grupe.clear();
+		kietiakai.clear();
+		vargsiukai.clear();
+    }
     wcout << L"Testas baigtas. Patikrinkite tyrimas.txt\n";
 }

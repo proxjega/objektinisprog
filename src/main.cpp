@@ -8,7 +8,7 @@ int main()
     _setmode(_fileno(stderr), _O_U8TEXT);
     srand(time(NULL));
 
-    vector<Student> grupe, vargsiukai, kietiakai;
+    deque<Student> grupe, vargsiukai, kietiakai;
     wstring names[5] = { L"name1", L"name2", L"name3", L"name4", L"name5" };
     wstring surnames[5] = { L"surname1", L"surname2", L"surname3", L"surname4", L"surname5" };
     float galutinisVid = 0;
@@ -180,7 +180,7 @@ int main()
             continue;
         }
     }
-    grupe.shrink_to_fit();
+   grupe.shrink_to_fit();
     wcout << L"Pagal ką rušiuoti studentus į grupes? 1 - vidurkis, 0 - mediana\n";
     while (true) {
         try {
