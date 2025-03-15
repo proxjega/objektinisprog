@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="funkcijos.h" />
     <ClInclude Include="mylibrary.h" />
+    <ClInclude Include="templates.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
