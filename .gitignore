@@ -373,3 +373,10 @@ FodyWeavers.xsd
 /vargsiukuRezultatai.txt
 /kietiakuRezultatai.txt
 /studentai.zip
+/CMakeFiles
+*.vcxproj
+*.sln
+*.filters
+/CMakeCache.txt
+*.cmake
+/install_manifest.txt
