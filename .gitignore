@@ -380,3 +380,7 @@ FodyWeavers.xsd
 /CMakeCache.txt
 *.cmake
 /install_manifest.txt
+/CMakeLists.txt
+/runme.bat
+src/
+include/
