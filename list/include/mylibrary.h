@@ -53,6 +53,7 @@ int InputMark();
 int InputMarkNum();
 int InputExamMark();
 int InputTestNum();
+int InputStrategy();
 float Mean(Student st);
 float Median(Student st);
 bool CompareByName(Student a, Student b);

@@ -69,3 +69,17 @@ int InputTestNum() {
         }
     }
 }
+
+int InputStrategy() {
+    int value;
+    while (true) {
+        if (cin >> value && value <=3 && value >= 1) {
+            return value;
+        }
+        else {
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            throw L"\007Įveskite tinkamą strategijos numerį";
+        }
+    }
+}
