@@ -1,6 +1,7 @@
 # Naudojimo instrukcija:
-1. Kad paleisti programą, jums reikia paleisti failą runme.bat
-2. Programa turi atsidaryti terminale, taip pat ir sukurti projektą jūsų IDE
+1. Yra 3 programos versijos: su Vector, Deque ir List konteineriais. Jų kodai yra atitinkamai aplankuose
+2. Kad paleisti programą, jums reikia įeiti į norima aplanką ir ten paleisti runme.bat
+3. Programa turi atsidaryti terminale, taip pat ir sukurti projektą jūsų IDE
 
 # Reikalavimai:
 - Windows 10 x64bit ar naujesnė versija
