@@ -1,11 +1,17 @@
+# Naudojimo instrukcija:
+1. Kad paleisti programą, jums reikia paleisti failą runme.bat
+2. Programa turi atsidaryti terminale, taip pat ir sukurti projektą jūsų IDE
+
+# Reikalavimai:
+- Windows 10 x64bit ar naujesnė versija
+- Instaliuotas CMake
+
 # Spartos tyrimas:
-## Buvo atliktas programos spartos tyrimas, naudojant skirtingu įrašų dydžio duomenų failus. Žemiau pateiktas rezultatų vidurkis 
-![image](https://github.com/user-attachments/assets/f90e6b29-82ce-42f9-b71a-bdbfcf16bb49)
+## Buvo atliktas programos spartos tyrimas, naudojant skirtingu įrašų dydžio duomenų failus.  
+### Testavimo sistemos parametrai:
+- CPU: AMD Ryzen 7 7735HS, 3.50 GHz
+- RAM: 16GB
+- Disk: SSD M.2 2242 PCIe 4.0x4 NVMe
 
-## Kiekvieno atskiro tyrimo rezultatai:
-![image](https://github.com/user-attachments/assets/028d9e3d-4b1c-4441-b33b-8a7d7c31815c)
 
-## Testavimo rezultato pavyzdys: 
-![image](https://github.com/user-attachments/assets/0cd608f1-b022-434c-b06d-dfb401909f72)
-
-### Visa informacija yra pasiekiama aplanke "spartos tyrimas" failuose "tyrimas.txt" ir "tyrimorezultatai.xlsx"
+### Visa informacija yra pasiekiama aplanke "spartos_tyrimas"
