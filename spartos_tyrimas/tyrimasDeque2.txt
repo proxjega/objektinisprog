@@ -97,4 +97,3 @@ Studentu rusiavimas i 2 grupes is 1000000 irasu: 1796.21 s
 Surusiuotu studentu isvedimas is 1000000 irasu: 3.2995 s
 Visos programos veikimo laikas is 1000000 irasu: 1804.88 s
 
-Programos veikimas: 
