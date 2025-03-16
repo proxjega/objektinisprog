@@ -22,7 +22,7 @@ int main()
 	wstring inputFileName;
     wstring outputFileName;
 	wifstream inputFile;
-    
+    std::ofstream test;
 
 
     while (check == true) {

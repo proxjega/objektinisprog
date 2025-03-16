@@ -74,6 +74,12 @@ void PrintIntoFile(T group, wstring fileName) {
 
 template <class arr1, class arr2, class arr3>
 void TestFunction(arr1& grupe, arr2& vargsiukai, arr3& kietiakai) {
+    double readMean = 0, sortMean = 0, printMean = 0, allMean = 0;
+    std::wofstream researchResults("spartos_tyrimas\\tyrimas1Strategija.txt", std::ios::app);
+    wstringstream output; 
+	wstring containers[] = {L"Vector", L"Deque", L"List"};
+    int containerNum = 0;
+
     wcout << L"Is kiek irasu testuoti programa?";
     int testNum;
     while (true) {
@@ -100,14 +106,20 @@ void TestFunction(arr1& grupe, arr2& vargsiukai, arr3& kietiakai) {
         }
     
         std::ofstream testFile;
-        if (std::is_same<typename std::decay<decltype(grupe)>::type, std::vector<Student>>::value)
-            testFile.open("tyrimasVector.txt", std::ios::app);
-        else if (std::is_same<typename std::decay<decltype(grupe)>::type, std::deque<Student>>::value)
-            testFile.open("tyrimasDeque.txt", std::ios::app);
-        else if (std::is_same<typename std::decay<decltype(grupe)>::type, std::list<Student>>::value)
-            testFile.open("tyrimasList.txt", std::ios::app);
+        if (std::is_same<typename std::decay<decltype(grupe)>::type, std::vector<Student>>::value) {
+            testFile.open("spartos_tyrimas\\tyrimasVector.txt", std::ios::app);
+			containerNum = 0;
+        }
+        else if (std::is_same<typename std::decay<decltype(grupe)>::type, std::deque<Student>>::value) {
+			testFile.open("spartos_tyrimas\\tyrimasDeque.txt", std::ios::app);
+			containerNum = 1;
+        }
+        else if (std::is_same<typename std::decay<decltype(grupe)>::type, std::list<Student>>::value) {
+			testFile.open("spartos_tyrimas\\tyrimasList.txt", std::ios::app);
+			containerNum = 2;
+		}
         else
-            testFile.open("tyrimas.txt", std::ios::app); // Default fallback
+            testFile.open("spartos_tyrimas\\tyrimasUnknown.txt", std::ios::app); // Default fallback
 
     
         testFile << "Programos veikimas: \n";
@@ -131,15 +143,28 @@ void TestFunction(arr1& grupe, arr2& vargsiukai, arr3& kietiakai) {
         outputFileName = L"kietiakuRezultatai.txt";
         PrintIntoFile(kietiakai, outputFileName);
         std::chrono::time_point<std::chrono::system_clock> endOutput = std::chrono::system_clock::now();
-        std::chrono::time_point<std::chrono::system_clock> programEnd = std::chrono::system_clock::now();
 
         testFile << "Duomenu nuskaitymas is " << testNum << " irasu: " << std::chrono::duration<double>(endReading - programStart).count() << " s\n";
         testFile << "Studentu rusiavimas i 2 grupes is " << testNum << " irasu: " << std::chrono::duration<double>(endSorting - startSorting).count() << " s\n";
         testFile << "Surusiuotu studentu isvedimas is " << testNum << " irasu: " << std::chrono::duration<double>(endOutput - startOutput).count() << " s\n";
-        testFile << "Visos programos veikimo laikas is " << testNum << " irasu: " << std::chrono::duration<double>(programEnd - programStart).count() << " s\n\n";
-		grupe.clear();
+        testFile << "Visos programos veikimo laikas is " << testNum << " irasu: " << std::chrono::duration<double>(endOutput - programStart).count() << " s\n\n";
+		if (i == 4) testFile << "----------------------------------------------------------------------------------------------------------------\n";
+        readMean += std::chrono::duration<double>(endReading - programStart).count();
+		sortMean += std::chrono::duration<double>(endSorting - startSorting).count();
+		printMean += std::chrono::duration<double>(endOutput - startOutput).count();
+		allMean += std::chrono::duration<double>(endOutput - programStart).count();
+        grupe.clear();
 		kietiakai.clear();
 		vargsiukai.clear();
     }
+	readMean = readMean / 5.0;
+	sortMean = sortMean / 5.0;
+	printMean = printMean / 5.0;
+	allMean = allMean / 5.0;
+	
+    /*output << setw(17) << left << L"Container" << setw(17) << left << L"Irasu sk." << setw(25) << left << "Skaitymo vidurkis(s)" << setw(25) << left << "Rusiavimo vidurkis(s)" << setw(25) << left << "Isvedimo vidurkis(s)" << setw(25) << left << "Visos programos vidurkis(s)\n";
+    output << "-------------------------------------------------------------------------------------------------------\n";*/
+	output << setw(17) << left << containers[containerNum] << setw(17) << left << testNum << setw(25) << left << readMean << setw(25) << left << sortMean << setw(25) << left << printMean << setw(25) << left << allMean << L"\n";
+	researchResults << output.str();
     wcout << L"Testas baigtas. Patikrinkite tyrimas.txt\n";
 }
