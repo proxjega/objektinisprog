@@ -17,6 +17,7 @@ int main()
     int markNum;
     int randExMark;
     int randMark;
+	int strategy;
     bool check = true;
     bool sortType = 1;
 	wstring inputFileName;
@@ -167,7 +168,23 @@ int main()
 			}
             break;
         case('5'):
-            TestFunction(grupe, vargsiukai, kietiakai);
+            wcout << L"Kokią strategiją naudoti? 1,2 ar 3?\n";
+            while (true) {
+                try {
+                    strategy = InputStrategy();
+                    break;
+                }
+                catch (const wchar_t* e) {
+                    wcerr << e << endl;
+                    continue;
+                }
+                catch (...) {
+                    wcerr << L"\007Nežinoma klaida" << endl;
+                    continue;
+                }
+            }
+            if (strategy == 1) TestFunction(grupe, vargsiukai, kietiakai);
+            if (strategy == 2) TestFunction2(grupe, vargsiukai);
             break;
         case('6'):
             system("cls");
