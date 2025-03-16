@@ -13,9 +13,10 @@
 - CPU: AMD Ryzen 7 7735HS, 3.50 GHz
 - RAM: 16GB
 - Disk: SSD M.2 2242 PCIe 4.0x4 NVMe
-### Rezultatai naudojant 1 strategiją (Bendro studentai konteinerio (vector, list ir deque tipų) skaidymas (rūšiavimas) į du naujus to paties tipo konteinerius: "vargšiukų" ir "kietiakų"):
+### 1 strategijos rezultatai (Bendro studentai konteinerio (vector, list ir deque tipų) skaidymas (rūšiavimas) į du naujus to paties tipo konteinerius: "vargšiukų" ir "kietiakų"):
 ![image](https://github.com/user-attachments/assets/0da29df4-498d-4ad7-8e8b-c09c8d08d001)
-#### Pasirodo, Deque konteineris yra greičiausias.
+#### Čia yra pateikti 5 testų vidurkiai.
+#### Pasirodo, Deque konteineris yra greičiausias, kai įrašų skaičius didesnis nei 100000. Kai šis skaičius mažesnis - laimi Vector.
 ### Visa informacija ir kiekvieno testo laikai yra pasiekiama aplanke "spartos_tyrimas"
 
 # Versijos:
