@@ -1,5 +1,5 @@
-﻿#include "mylibrary.h"
-#include "templates.h"
+﻿#include "../include/mylibrary.h"
+#include "../include/templates.h"
 
 int main()
 {

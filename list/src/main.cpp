@@ -1,5 +1,5 @@
-﻿#include "mylibrary.h"
-#include "templates.h"
+﻿#include "../include/mylibrary.h"
+#include "../include/templates.h"
 
 int main()
 {
@@ -169,7 +169,7 @@ int main()
 			}
             break;
         case('5'):
-			wcout << "Kokią strategiją naudoti? 1,2 ar 3?\n";
+			wcout << L"Kokią strategiją naudoti? 1,2 ar 3?\n";
             while (true) {
                 try {
                     strategy = InputStrategy();
@@ -185,7 +185,7 @@ int main()
                 }
             }
             if (strategy == 1) TestFunction(grupe, vargsiukai, kietiakai);
-            if (strategy == 2) TestFunction2(grupe, vargsiuk);
+            //if (strategy == 2) TestFunction2(grupe, vargsiukai);
             break;
         case('6'):
             system("cls");

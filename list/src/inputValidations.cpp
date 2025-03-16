@@ -1,4 +1,4 @@
-﻿#include "funkcijos.h"
+﻿#include "../include/funkcijos.h"
 
 int InputMark() {
     int value;

@@ -1,4 +1,4 @@
-﻿#include "funkcijos.h"
+﻿#include "../include/funkcijos.h"
 
 float Mean(Student st) {
     return (std::accumulate(st.marks.begin(), st.marks.end(), 0) * 1.0) / (st.marks.size() * 1.0);
