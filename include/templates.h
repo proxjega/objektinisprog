@@ -34,26 +34,24 @@ void Readfile(std::wifstream& inputFile, T& grupe) { //skaitymas is failo
 
 template <class arr1, class arr2, class arr3>
 void SortStudentsInGroups(arr1& kietiakai, arr2& vargsiukai, arr3& group, bool sortType) { //sorting function
-    for (int i = 0; i < group.size(); i++) {
+    for (auto it = group.begin(); it != group.end(); it++) {
         if (sortType == 1) {
-            if (group[i].vid < 5.0) {
-                vargsiukai.push_back(group[i]);
+            if (it->vid < 5.0) {
+                vargsiukai.push_back(*it);
             }
             else {
-                kietiakai.push_back(group[i]);
+                kietiakai.push_back(*it);
             }
         }
         else {
-            if (group[i].median < 5.0) {
-                vargsiukai.push_back(group[i]);
+            if (it->median < 5.0) {
+                vargsiukai.push_back(*it);
             }
             else {
-                kietiakai.push_back(group[i]);
+                kietiakai.push_back(*it);
             }
         }
     }
-    kietiakai.shrink_to_fit();
-    vargsiukai.shrink_to_fit();
 }
 
 template <class T>
@@ -61,10 +59,10 @@ void PrintIntoFile(T& group, wstring fileName) {
     wstringstream output;
     output << setw(17) << left << L"Pavardė" << setw(17) << left << L"Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
     output << "-----------------------------------------------------------------------------------\n";
-    for (int i = 0; i < group.size(); i++) {
-        output << setw(17) << left << group[i].surname << setw(17) << left
-            << group[i].name << setw(20) << left << setprecision(2) << fixed
-            << group[i].vid << setw(15) << left << setprecision(2) << fixed << group[i].median << L"\n";
+    for (auto it = group.begin(); it != group.end(); it++) {
+        output << setw(17) << left << it->surname << setw(17) << left
+            << it->name << setw(20) << left << setprecision(2) << fixed
+            << it->vid << setw(15) << left << setprecision(2) << fixed << it->median << L"\n";
     }
     std::wofstream outputFile(fileName);
     outputFile.imbue(std::locale(outputFile.getloc(), new std::codecvt_utf8<wchar_t>));
@@ -126,15 +124,13 @@ void TestFunction(arr1& grupe, arr2& vargsiukai, arr3& kietiakai) {
 
         std::chrono::time_point<std::chrono::system_clock> programStart = std::chrono::system_clock::now();
         Readfile(inputFile, grupe);
-        grupe.shrink_to_fit();
         std::chrono::time_point<std::chrono::system_clock> endReading = std::chrono::system_clock::now();
 
         std::chrono::time_point<std::chrono::system_clock> startSorting = std::chrono::system_clock::now();
         SortStudentsInGroups(kietiakai, vargsiukai, grupe, 1);
         grupe.clear();
-        grupe.shrink_to_fit();
-        sort(kietiakai.begin(), kietiakai.end(), CompareByVid);
-        sort(vargsiukai.begin(), vargsiukai.end(), CompareByVid);
+		kietiakai.sort(CompareByVid);
+		vargsiukai.sort(CompareByVid);
         std::chrono::time_point<std::chrono::system_clock> endSorting = std::chrono::system_clock::now();
 
         std::chrono::time_point<std::chrono::system_clock> startOutput = std::chrono::system_clock::now();

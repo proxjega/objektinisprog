@@ -9,7 +9,7 @@ int main()
     srand(time(NULL));
 
 
-    deque<Student> grupe, vargsiukai, kietiakai;
+    list<Student> grupe, vargsiukai, kietiakai;
     wstring names[5] = { L"name1", L"name2", L"name3", L"name4", L"name5" };
     wstring surnames[5] = { L"surname1", L"surname2", L"surname3", L"surname4", L"surname5" };
     float galutinisVid = 0;
@@ -180,7 +180,6 @@ int main()
             continue;
         }
     }
-   grupe.shrink_to_fit();
     wcout << L"Pagal ką rušiuoti studentus į grupes? 1 - vidurkis, 0 - mediana\n";
     while (true) {
         try {
@@ -200,27 +199,26 @@ int main()
     
     SortStudentsInGroups(kietiakai, vargsiukai, grupe, sortType);
     grupe.clear();
-    grupe.shrink_to_fit();
     wcout << L"Pagal ką rušiuoti studentus? (1 - pagal vardą, 2 - pagal pavardę, 3 - pagal galutinį balą (vid.), 4 - pagal galutinį balą (med.))\n";
     while (true) {
         cin >> menu;
         switch (menu)
         {
         case('1'):
-            sort(kietiakai.begin(), kietiakai.end(), CompareByName);
-            sort(vargsiukai.begin(), vargsiukai.end(), CompareByName);
+			kietiakai.sort(CompareByName);
+			vargsiukai.sort(CompareByName);
             break;
         case('2'):
-            sort(kietiakai.begin(), kietiakai.end(), CompareBySurname);
-            sort(vargsiukai.begin(), vargsiukai.end(), CompareBySurname);
+			kietiakai.sort(CompareBySurname);
+			vargsiukai.sort(CompareBySurname);
             break;
         case('3'):
-            sort(kietiakai.begin(), kietiakai.end(), CompareByVid);
-            sort(vargsiukai.begin(), vargsiukai.end(), CompareByVid);
+			kietiakai.sort(CompareByVid);
+			vargsiukai.sort(CompareByVid);
             break;
         case('4'):
-            sort(kietiakai.begin(), kietiakai.end(), CompareByMed);
-            sort(vargsiukai.begin(), vargsiukai.end(), CompareByMed);
+			kietiakai.sort(CompareByMed);
+			vargsiukai.sort(CompareByMed);
             break;
         default:
             wcout << L"\007Įveskite tinkama skaičių nuo 1 iki 4\n";
