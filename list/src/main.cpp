@@ -185,7 +185,7 @@ int main()
                 }
             }
             if (strategy == 1) TestFunction(grupe, vargsiukai, kietiakai);
-            //if (strategy == 2) TestFunction2(grupe, vargsiukai);
+            if (strategy == 2) TestFunction2(grupe, vargsiukai);
             break;
         case('6'):
             system("cls");
