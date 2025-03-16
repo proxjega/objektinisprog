@@ -33,7 +33,7 @@ void Readfile(std::wifstream& inputFile, T& grupe) { //skaitymas is failo
 }
 
 template <class arr1, class arr2, class arr3>
-void SortStudentsInGroups(arr1& kietiakai, arr2& vargsiukai, arr3 group, bool sortType) { //sorting function
+void SortStudentsInGroups(arr1& kietiakai, arr2& vargsiukai, arr3& group, bool sortType) { //sorting function
     for (int i = 0; i < group.size(); i++) {
         if (sortType == 1) {
             if (group[i].vid < 5.0) {
@@ -57,7 +57,7 @@ void SortStudentsInGroups(arr1& kietiakai, arr2& vargsiukai, arr3 group, bool so
 }
 
 template <class T>
-void PrintIntoFile(T group, wstring fileName) {
+void PrintIntoFile(T& group, wstring fileName) {
     wstringstream output;
     output << setw(17) << left << L"Pavardė" << setw(17) << left << L"Vardas" << setw(20) << left << "Galutinis(vid.)" << setw(15) << left << "Galutinis(med.)\n";
     output << "-----------------------------------------------------------------------------------\n";
@@ -166,5 +166,5 @@ void TestFunction(arr1& grupe, arr2& vargsiukai, arr3& kietiakai) {
     output << "-------------------------------------------------------------------------------------------------------\n";*/
 	output << setw(17) << left << containers[containerNum] << setw(17) << left << testNum << setw(25) << left << readMean << setw(25) << left << sortMean << setw(25) << left << printMean << setw(25) << left << allMean << L"\n";
 	researchResults << output.str();
-    wcout << L"Testas baigtas. Patikrinkite tyrimas.txt\n";
+    wcout << L"Testas baigtas. Patikrinkite spartos_tyrimas aplanka\n";
 }

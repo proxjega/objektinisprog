@@ -8,7 +8,7 @@ int main()
     _setmode(_fileno(stderr), _O_U8TEXT);
     srand(time(NULL));
 
-    deque<Student> grupe, vargsiukai, kietiakai;
+    vector<Student> grupe, vargsiukai, kietiakai;
     wstring names[5] = { L"name1", L"name2", L"name3", L"name4", L"name5" };
     wstring surnames[5] = { L"surname1", L"surname2", L"surname3", L"surname4", L"surname5" };
     float galutinisVid = 0;
@@ -23,7 +23,6 @@ int main()
     wstring outputFileName;
 	wifstream inputFile;
     std::ofstream test;
-
 
     while (check == true) {
         Student student;
@@ -176,7 +175,7 @@ int main()
             break;
         default:
             system("cls");
-            wcout << L"\007Įveskite tinkamą skaičių nuo 1 iki 5\n";
+            wcout << L"\007Įveskite tinkamą skaičių nuo 1 iki 6\n";
             continue;
         }
     }
