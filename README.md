@@ -12,7 +12,7 @@
 ### Testavimo sistemos parametrai:
 - CPU: AMD Ryzen 7 7735HS, 3.50 GHz
 - RAM: 16GB
-- Disk: SSD M.2 2242 PCIe 4.0x4 NVMe
+- Disk: SSD M.2 PCIe 4.0x4 NVMe
 - Release version (in Visual Studio 2022)
 - -O3 optimization flag
 ## 1 strategijos rezultatai:
