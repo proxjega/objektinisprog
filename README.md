@@ -33,8 +33,10 @@
 
 # Versijos:
 
-## v1.0
+## v1.0-final
 - Naujausia versija
+- Pridėta 2 strategija, atliktas spartos tyrimas
+## v1.0-pradine
 - Yra 3 programos, veikiančios su skirtingais konteineriais
 - Atliktas spartos tyrimas
 ## v0.4
